@@ -1,0 +1,36 @@
+<% title t('reviews.product_reviews') %>
+<% content_for :content do %>
+  <% if @product && (@brand.review_writable? || !@reviews.empty?) %>
+    <% display_write_form = @brand.review_writable? && display_write_form?(@product) && !@external_widget %>
+    <%= content_tag :div, class: "widget new-review first #{'no-writable' if !@brand.review_writable?}" do %>
+      <div class="widget-heading">
+        <div class="widget-title">
+          <%= @brand.review_product_review_title %>
+        </div>
+        <% if !@brand.reviews_index_url.blank? %>
+          <%= content_tag :div, @brand.reviews_index_button_title, class: 'rfloat btn show-reviews-index', data: {reviews_index_url: @brand.reviews_index_url} %>
+        <% end %>
+      </div>
+      <% if display_write_form %>
+        <div class="widget-body">
+          <%= render 'reviews/form' %>
+          <%= render 'common/shared/form_upload_image' %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= render 'reviews', external_widget: @external_widget %>
+    <% if @brand.review_show_score_summary || (@brand.review_show_thumbnail_summary && @product.photo_reviews_count > 0) %>
+      <%
+        only_thumbnail = nil
+        if !@brand.review_show_score_summary
+          only_thumbnail = 'only-thumbnail' if !display_write_form
+        end
+      %>
+      <div class="product-reviews-summary <%= only_thumbnail %>">
+        <%= content_tag :div, class: 'score-summary', data: {url: ajax_path(except: [:scores, :filter, :page], atarget: 'reviews')} do %>
+          <%= render 'reviews_summary', product: @product, external_widget: @external_widget %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
