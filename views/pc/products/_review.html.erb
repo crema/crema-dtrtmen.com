@@ -50,7 +50,7 @@ is_my_last_review = my_last_review?(review) if local_assigns[:is_my_last_review]
   <%= content_tag :div, class: "r-contents index" do %>
     <ul>
       <li>
-        <div class="title">작성자.</div>
+        <div class="title">작성자</div>
         <div class="value"><%= review.user_display_name %></div>
       </li>
       <% if @brand.review_show_created_at %>
