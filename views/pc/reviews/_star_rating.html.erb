@@ -1,0 +1,5 @@
+<div class="star-rating-container">
+  <% (1..5).each do |i| %>
+    <%= content_tag :span, nil, class: "star #{'star-empty' if score && i > score}" %>
+  <% end %>
+</div>

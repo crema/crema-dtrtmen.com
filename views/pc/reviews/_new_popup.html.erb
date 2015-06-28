@@ -1,0 +1,74 @@
+<%= form_for @review, html: {multipart: true, class: 'form-review new_review'}, remote: true, validate: true, data: {review_message_default: @brand.review_message_default, already_posted: @already_posted, alert_requirement: @brand.review_alert_mileage_requirement_before_submit} do |f| %>
+  <div class="review-item-information">
+    <%= image_tag @review.product.image_url(:middle), class: 'smooth', alt: @review.product.name, style: "margin-top: #{@review.product.image.height(:middle)/ @review.product.image.width(:middle) * -184}px" %>
+    <% if @brand.review_popup_display_no_mileage_message && @review.product.no_mileage? %>
+      <div class="no-mileage-tag">적립금 제외 상품</div>
+    <% elsif @brand.review_show_first_photo %>
+      <% if @review.product.first_photo_review? %>
+        <div class="first-photo-review-selected">
+          <div class="first-review-notice">
+            포토리뷰 최초 작성입니다
+          </div>
+          <div class="first-review-reward">
+            <%= @brand.review_popup_first_reward_message %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= content_tag :div, '이 상품 다시 보지 않기', class: 'popup-item-not-view', data: {url: review_pending_reviews_path(sub_order_id: @review.sub_order_id)} %>
+    <div class="item-information-text">
+      <% if !@review.product.name.blank? %>
+        <div class="item-name"><%= @review.product.name %></div>
+      <% end %>
+      <% if 0 != @review.product.org_price %>
+        <div class="item-price">₩<%= number_with_delimiter(@review.product.org_price) %></div>
+      <% end %>
+    </div>
+    <div class="item-indicator"></div>
+  </div>
+  <div class="review-form-title">리뷰작성란</div>
+  <div class="review-form-content limit-count-container">
+    <div class="review-form">
+      <%= render 'review_option_fields', f: f, divider: true %>
+      <div class="textarea-container">
+        <%= f.text_area(
+          :message,
+          validate: {presence: true},
+          default_value: @review.message,
+          placeholder: (@brand.review_message_placeholder if @brand.review_default_message_type == ReviewDefaultMessageType::PLACEHOLDER),
+          maxlength: Settings.max_review_length,
+          rows: 8,
+          cols: 5000, # HACK - IE8 textarea scroll bug
+          data: {up_counter: true, min_height: (browser.ie7? ? 135 : 158), minimum_message_length: @brand.give_mileage_minimum_message_length},
+          default_count: @review.message ? @review.message.gsub(/\s/, '').length : 0,
+          class: 'autogrow count-limit'
+          ) %>
+      </div>
+    </div>
+    <div class="limit-counter">0</div>
+  </div>
+  <div class="field-box score-container">
+    <%= f.select :score, ReviewScore.values.collect {|score| [ReviewScore.t(score), score]}, {selected: 5}, {dir: 'rtl', class: 'select-rating'} %>
+  </div>
+  <div class="review-input-photos">
+    <div class="input-button review-photos">
+      <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: 4, images_count: 0}  do %>
+        <% (0...@review.images_count).each do |i| %>
+          <%= render 'common/reviews/image_field', f: f, image_position: i + 1, review: @review %>
+        <% end %>
+        <%= render 'common/reviews/image_field', f: f, image_position: @review.images_count + 1, review: @review if @review.images_count < 4 %>
+      <% end %>
+      <%= f.hidden_field :product_id %>
+      <%= f.hidden_field :sub_order_id %>
+      <%= f.hidden_field :review_source %>
+    </div>
+  </div>
+  <div class="review-submit-container">
+    <%= f.submit @brand.review_popup_submit, class: 'review-submit-button', data: {disable_with: "저장 중..."} do %>
+    <% end %>
+  </div>
+  <script type="text/x-jquery-tmpl" class="new-image-field">
+    <%= render('common/reviews/image_field', f: f, template: true, review: @review) %>
+  </script>
+<% end %>
+<%= render 'common/shared/form_upload_image' %>

@@ -1,0 +1,41 @@
+<% brand_notices = BrandNotice.all %>
+<% if brand_notices.count != 0 %>
+  <div id="review-notice">
+    <ul id="review-notice-top">
+      <li>
+        <span class="notice-count"><strong><%= brand_notices.count%></strong>개의</span>
+        <span class="notice-count-text">공지글이 있습니다</span>
+      </li>
+    </ul>
+    <ul id="review-notice-container">
+      <% brand_notices.order(:position).each_with_index do |brand_notice, index| %>
+        <%= content_tag_for :li, brand_notice, class: "#{'last' if index == 2} #{'hidden' if index >= 3} #{'selected' if brand_notice.expanded?}" do %>
+          <a class="link-expand-review-notice">
+            <div class="review-notice-title">
+              <strong>::</strong><%= brand_notice.title %>
+            </div>
+            <div class="review-notice-date">
+              <%= brand_notice.created_at.strftime("%Y-%m-%d") %><br />
+            </div>
+          </a>
+          <%= content_tag :div, class: 'brand-notice-content review-contents-style', style: ('display: none;' if !brand_notice.expanded?) do %>
+            <div class="arrow-top"></div>
+            <div class="l-contents"><%=raw brand_notice.message %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+    <div class="review-notice-more">
+      <a class="mall-link-color">
+        <span class="review-more-notice-count">
+          <% if brand_notices.count > 3 %>
+            <%= brand_notices.count - 3  %> 개 공지글 더 보기
+          <% end %>
+        </span>
+        <span class="review-more-notice-close" style="display: none;">
+          접기
+        </span>
+      </a>
+    </div>
+  </div>
+<% end %>

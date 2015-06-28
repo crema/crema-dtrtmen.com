@@ -1,0 +1,26 @@
+<% title @board ? @board.name : '전체 리뷰' %>
+<% content_for :content do %>
+  <%= content_tag :div, class: "widget widget-reviews pagination-list #{'no-data' if @reviews.empty?}" do %>
+    <div class="widget-heading">
+      <div class="widget-title">
+        <%=raw @brand.widgets_reviews_index_title %>
+      </div>
+    </div>
+    <div class="widget-body">
+      <%= render 'top_menu' %>
+      <%= render 'notices' %>
+      <% review_option_types = @brand.searchable_options %>
+      <% if !review_option_types.blank? %>
+        <%= render 'review_options_search', review_option_types: review_option_types %>
+      <% end %>
+      <%= content_tag :div, '아직 작성한 리뷰가 없습니다.', class: 'no-data-message' %>
+      <ul class="reviews reviews-default">
+        <%= render @reviews %>
+      </ul>
+    </div>
+    <div class="widget-footer">
+      <%= render 'pagination' %>
+    </div>
+  <% end %>
+  <%= render 'common/shared/form_upload_image' %>
+<% end %>

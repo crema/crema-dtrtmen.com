@@ -1,0 +1,684 @@
+@import "../lib/common";
+@import "compass/css3/box-sizing";
+
+#review-container {
+  width: 576px;
+  height: 621px;
+  position: relative;
+  background: image-url('pc/reviews/review-background.png');
+}
+
+.review-column-left {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: white;
+  width: 189px;
+  float: left;
+  box-shadow: 0 5px 5px rgba(0,0,0,.4);
+  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,.4);
+}
+
+.review-column-right {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: white;
+  width: 368px;
+  box-shadow: 0 5px 5px rgba(0,0,0,.4);
+  overflow: hidden;
+}
+
+.review-owner-information {
+  height: 128px;
+  padding: 28px 15px 21px 15px;
+
+  div {
+    padding-left: 4px;
+
+    &.review-title {
+      font-family: 'Nanum Gothic';
+      font-size: 13px;
+      line-height: 18px;
+      color: #777;
+
+      strong {
+        display: block;
+        font-size: 20px;
+        color: black;
+        padding-top: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.review-user-name {
+  font-family: 'Nanum Gothic';
+  font-weight: bold;
+  font-size: 15px;
+  color: #242424;
+  padding-bottom: 4px;
+}
+
+.review-information-detail-button {
+  border: 1px solid #ccc;
+  letter-spacing: -1px;
+  font-size: 11px;
+  color: #b1b1b1;
+  text-align: center;
+  font-size: 11px;
+  margin-top: 17px;
+  padding: 8px 2px !important;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+
+.review-information-detail-button:hover {
+  background-color: #444;
+  color: white;
+  border-color: #444;
+}
+
+.review-itemlist-backward-button, .review-itemlist-forward-button {
+  background-color: #ebebeb;
+  color: #868686;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 9px 0;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: 0 1px 0 white;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+
+.review-itemlist-backward-button:hover, .review-itemlist-forward-button:hover {
+  background-color: #dbdbdb;
+  color: #767676;
+}
+
+.review-itemlist-container {
+  height: 336px;
+  background: #ebebeb;
+
+  ul {
+    text-decoration: none;
+    background-color: #ebebeb;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 337px;
+    overflow: hidden;
+
+    li {
+      width: 100%;
+      height: 110px;
+      position: relative;
+      font-family: 'Nanum Gothic';
+
+      &.last-review-item {
+        text-align: center;
+        line-height: 118px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #aaa;
+        text-shadow: 0 1px 0 white;
+        -webkit-transition: color 0.2s;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #999;
+        }
+      }
+    }
+  }
+}
+
+.review-listitem-information {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: image-url('pc/reviews/item-list-background.png');
+  cursor: pointer;
+  color: #ccc;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+
+.review-listitem-information {
+  .listitem-name, .listitem-reward  {
+    padding-top: 5px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .listitem-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    width: 180px;
+    margin: 22px auto 0 auto;
+    height: 30px;
+  }
+
+  .listitem-reward strong {
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 3px;
+    color: white;
+  }
+
+  &.hover {
+    color: white;
+  }
+}
+
+.review-listitem-information-selected {
+  display: none;
+}
+
+.review-listitem-information-tag {
+  @include inline-block;
+  color: black;
+  background: white;
+  font-size: 11px;
+  padding: 5px 2px;
+  margin: 0 auto;
+  width: 110px;
+  border-radius: 8px;
+}
+
+.no-mileage-tag {
+  position: absolute;
+  top: 11px;
+  left: 0px;
+  padding: 9px;
+  background: image-url('pc/reviews/first-photo-review-backbround.png');
+  font-size: 11px;
+}
+
+.first-photo-review-selected {
+  position: absolute;
+  top: 11px;
+  left: 0px;
+  padding: 9px 24px 7px 9px;
+  background: image-url('pc/reviews/first-photo-review-backbround.png');
+
+  .first-review-notice {
+    font-size: 11px;
+    line-height: 11px;
+    letter-spacing: -1px;
+    color: black;
+    padding-bottom: 3px;
+  }
+
+  .first-review-reward {
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: bold;
+    color: #cf0000;
+  }
+}
+
+.first-photo-review {
+  &.review-listitem-information {
+    .listitem-name, .listitem-reward {
+      padding-top: 0;
+    }
+
+    .listitem-reward {
+      margin: -11px 0 7px 0;
+    }
+  }
+}
+
+.first-photo-review-comment-reward {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.review-item-information {
+  width: 368px;
+  height: 184px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+  }
+}
+
+.item-indicator {
+  position: absolute;
+  width: 22px;
+  height: 11px;
+  background-image: image-url('pc/reviews/item-indicator.png');
+  bottom: -3px;
+  left: 24px;
+}
+
+
+.item-information-text {
+  position: absolute;
+  width: 100%;
+  height: 76px;
+  left: 0;
+  bottom: 0;
+  background-image: image-url('pc/reviews/item-information-text-background.png');
+  color: white;
+  text-align: right;
+}
+
+.item-information-text .item-name {
+  padding-right: 17px;
+  padding-bottom: 2px;
+  font-family: 'Nanum Gothic';
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 30px;
+}
+
+.item-information-text .item-price {
+  font-size: 11px;
+  font-family: 'Nanum Gothic';
+  color: #ccc;
+  color: rgba(255,255,255,.6);
+  padding-right: 17px;
+  margin-top: 3px;
+}
+
+.review-form-title {
+  font-family: 'Nanum Gothic';
+  height: 17px;
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  padding: 12px 0 5px 17px;
+}
+
+.review-score {
+  font-family: 'Nanum Gothic';
+  color: #aaa;
+  font-size: 13px;
+  vertical-align: middle;
+  text-align: left;
+  line-height: 21px;
+  padding: 9px 10px;
+  margin: 0 7px;
+  border:1px solid #d1d1d1;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+
+.review-score:hover, .review-score:active {
+  border:1px solid #aaa;
+}
+
+.review-score span {
+  color: #777;
+}
+
+.review-submit-container {
+  background-color: #f8f3ef;
+  width: 368px;
+  height: 72px;
+  text-align: center;
+}
+
+.review-input-photos {
+  width: 368px;
+  height: 81px;
+}
+
+.review-input-photos .review-photos {
+  @include inline-block;
+  width: 58px;
+  height: 58px;
+  margin-left:  1px;
+  cursor: pointer;
+}
+
+.review-input-photos .input-button {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.input-image-container  {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Nanum Gothic';
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.input-image-container img {
+  width: 37px;
+  height: 26px;
+  padding-bottom: 2px;
+}
+
+.review-input-photos .upload-photo {
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Nanum Gothic';
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.review-input-photos .upload-photo:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: "";
+  background: image-url('pc/reviews/review-background.png');
+}
+
+.review-input-photos .photo-delete {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  width: 100%;
+  color: white;
+  z-index: 10;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+}
+
+.review-input-photos .photo-delete:hover {
+  opacity: 1;
+}
+
+.review-submit-button {
+  margin-top: 15px;
+  width: 300px;
+  height: 43px;
+  border: 1px solid #c54a28;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-family: 'Nanum Gothic';
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  background: #f19b7a;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YxOWI3YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIlIiBzdG9wLWNvbG9yPSIjZjE5YjdhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMyUiIHN0b3AtY29sb3I9IiNlYTcwNGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTQ1ZTM5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  background: -moz-linear-gradient(top,  #f19b7a 0%, #f19b7a 2%, #ea704b 3%, #e45e39 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f19b7a), color-stop(2%,#f19b7a), color-stop(3%,#ea704b), color-stop(100%,#e45e39));
+  background: -webkit-linear-gradient(top,  #f19b7a 0%,#f19b7a 2%,#ea704b 3%,#e45e39 100%);
+  background: -o-linear-gradient(top,  #f19b7a 0%,#f19b7a 2%,#ea704b 3%,#e45e39 100%);
+  background: -ms-linear-gradient(top,  #f19b7a 0%,#f19b7a 2%,#ea704b 3%,#e45e39 100%);
+  background: linear-gradient(to bottom,  #f19b7a 0%,#f19b7a 2%,#ea704b 3%,#e45e39 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f19b7a', endColorstr='#e45e39',GradientType=0 );
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  text-shadow: 0 -1px 0 #c54a28;
+}
+
+.review-submit-button:hover {
+  background: #f3a181;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YzYTE4MSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIlIiBzdG9wLWNvbG9yPSIjZjNhMTgxIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMyUiIHN0b3AtY29sb3I9IiNlZDc3NTMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTg2NjQyIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  background: -moz-linear-gradient(top,  #f3a181 0%, #f3a181 2%, #ed7753 3%, #e86642 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3a181), color-stop(2%,#f3a181), color-stop(3%,#ed7753), color-stop(100%,#e86642));
+  background: -webkit-linear-gradient(top,  #f3a181 0%,#f3a181 2%,#ed7753 3%,#e86642 100%);
+  background: -o-linear-gradient(top,  #f3a181 0%,#f3a181 2%,#ed7753 3%,#e86642 100%);
+  background: -ms-linear-gradient(top,  #f3a181 0%,#f3a181 2%,#ed7753 3%,#e86642 100%);
+  background: linear-gradient(to bottom,  #f3a181 0%,#f3a181 2%,#ed7753 3%,#e86642 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3a181', endColorstr='#e86642',GradientType=0 );
+}
+
+.review-submit-button:active {
+  background: #e45e39;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U0NWUzOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk3JSIgc3RvcC1jb2xvcj0iI2VhNzA0YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iI2YxOWI3YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMTliN2EiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #e45e39 0%, #ea704b 97%, #f19b7a 98%, #f19b7a 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e45e39), color-stop(97%,#ea704b), color-stop(98%,#f19b7a), color-stop(100%,#f19b7a));
+  background: -webkit-linear-gradient(top, #e45e39 0%,#ea704b 97%,#f19b7a 98%,#f19b7a 100%);
+  background: -o-linear-gradient(top, #e45e39 0%,#ea704b 97%,#f19b7a 98%,#f19b7a 100%);
+  background: -ms-linear-gradient(top, #e45e39 0%,#ea704b 97%,#f19b7a 98%,#f19b7a 100%);
+  background: linear-gradient(to bottom, #e45e39 0%,#ea704b 97%,#f19b7a 98%,#f19b7a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e45e39', endColorstr='#f19b7a',GradientType=0 );
+}
+
+.review-close-button {
+  color: #444;
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+}
+
+.review-close-button ul li {
+  float: left;
+  text-decoration: none;
+  font-family: 'Nanum Gothic';
+  @include inline-block;
+  margin: 7px 0 0 4px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  border: 1px solid #999;
+  padding: 4px 8px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+
+  &:hover {
+    color: black;
+    background-color: white;
+    border-color: black;
+  }
+}
+
+.review-form-content {
+  position: relative;
+  margin: 2px 7px 6px 7px;
+  width: 352px;
+  height: 158px;
+  border: 1px solid #d1d1d1;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+
+  &:hover, &:active {
+    border: 1px solid #aaa;
+  }
+}
+
+.review-form {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  position: relative;
+
+  .field_with_errors {
+    height: 100%;
+  }
+
+  textarea {
+    font-size: 11px;
+    line-height: 13px;
+    height: 158px;
+    width: 100%;
+    border: none;
+    letter-spacing: -1px;
+    color: #bbb;
+    padding: 10px;
+    @include box-sizing(border-box);
+
+    html.document-mode-7 & {
+      width: 332px;
+      height: 135px;
+    }
+  }
+}
+
+.als-container {
+  position: relative;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.als-viewport {
+  position: relative;
+  overflow: hidden;
+  margin: 0px auto;
+}
+
+.als-wrapper {
+  position: relative;
+  list-style: none;
+}
+
+.als-item {
+  position: relative;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  width: 189px;
+  height: 110px;
+  margin-bottom: 2px;
+  overflow: hidden;
+
+  &>div {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    margin-top: -20%;
+  }
+}
+
+.slide_image {
+  border: 0;
+}
+
+#crema-content {
+  .image-fields-container {
+    width: 330px;
+    height: 75px;
+    padding: 0px;
+  }
+
+  .size-support {
+    min-width: 50px;
+  }
+
+  .sprites-icon-camera {
+    margin-top: 17px;
+    margin-bottom: 2px;
+  }
+
+  .description {
+    font-size: 9px;
+  }
+
+  .score-container {
+    margin-left: 7px;
+    width: 352px;
+    height: 40px;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border: 1px solid #dedede;
+    overflow: hidden;
+    position: relative;
+    div {
+      background: #fff;
+    }
+    .title {
+      font-size: 13px;
+      color: #777;
+      @include inline-block;
+    }
+
+    .star-rate-container {
+      padding-top: 0;
+    }
+
+    #review_score {
+      top: -27px;
+      font-size: 13px;
+    }
+  }
+
+  .star-rating-container {
+    @include inline-block;
+  }
+
+  .styled-select {
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    margin-top: -11px;
+  }
+
+  .popup-item-not-view {
+    text-decoration: none;
+    font-family: 'Nanum Gothic';
+    @include inline-block;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    cursor: pointer;
+    color: white;
+    float: right;
+    opacity: 0.63;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+
+    text-shadow: 0 0 8px black;
+    html.no-textshadow & {
+      text-shadow: none;
+      background: #aaaaaa;
+    }
+
+    &:hover {
+      opacity: 0.95;
+    }
+  }
+
+  .review-info-message {
+    position: absolute;
+    top: 130px;
+    left: 200px;
+    color: #777;
+    font-family: 'Nanum Gothic';
+    font-size: 13px;
+    width: 310px;
+    background: #fff;
+    display: none;
+    border: 1px solid #000;
+    padding: 20px;
+    line-height: 23px;
+    max-height: 407px;
+    overflow: auto;
+  }
+}

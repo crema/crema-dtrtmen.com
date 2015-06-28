@@ -1,0 +1,23 @@
+<% if @brand.review_enable_user_comments || review.comments_count > 0 %>
+  <%= content_tag :div, class: "comments-container ie-opacity-fix #{'hidden' if local_assigns[:external_widget] && review.comments_count == 0}" do %>
+    <div class="arrow-top"></div>
+    <ul>
+      <%= render review.comments if review.comments_count > 0 %>
+    </ul>
+    <% if @brand.review_enable_user_comments && !local_assigns[:external_widget] %>
+      <div class="new-comments ie-opacity-fix">
+        <%= form_for Comment.new, url: comments_path, validate: true, remote: true, data: {login_required: true} do |f| %>
+          <%= f.text_field :message, placeholder: Comment::PLACEHOLDER, class: 'input-block', data: {login_required: true} %>
+          <%= f.hidden_field :review_id, value: review.id %>
+          <%= content_tag :button, '등록', class: 'btn btn-white ie-opacity-fix', type: 'submit' %>
+          <input type="hidden" name="tracking_id">
+          <% if current_user %>
+            <script class="blueprint" type="text/x-jquery-tmpl">
+              <%= render "comments/comment", comment: Comment.template(current_user, review) %>
+            </script>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

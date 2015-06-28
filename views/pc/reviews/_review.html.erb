@@ -1,0 +1,80 @@
+<%
+hide_image = false if !local_assigns[:hide_image]
+product_url = review.product_url || (review.product ? review.product.url : nil) 
+user_grade_icon_url = review.user_grade_icon_url
+display_user_grade = @brand.review_author_display_type == ReviewAuthorDisplayType::USER_GRADE && @brand.brand_user_grade_display_type_in_reviews_index != BrandUserGradeDisplayType::NONE
+display_user_grade_icon = user_grade_icon_url.present? && @brand.brand_user_grade_display_type_in_reviews_index == BrandUserGradeDisplayType::TEXT_WITH_ICON
+%>
+<%= content_tag_for :li, review, data: {product_url: product_url, expand_url: expand_review_path(review)} do %>
+  <% if !hide_image %>
+    <% if product_url %>
+      <a class="image link-product">
+        <%= image_tag review.product_image_url, class: 'smooth', alt: review.product_name, width: 90, height: 90 %>
+      </a>
+    <% else %>
+      <span class="image">
+        <%= image_tag review.product_image_url, class: 'smooth', alt: review.product_name, width: 90, height: 90 %>
+      </span>
+    <% end %>
+  <% end %>
+  <%= content_tag :div, class: "l-contents panel #{'with-image' if !hide_image} #{'photo-review' if review.images_count > 0}" do %>
+    <div class="panel-heading no-border score">
+      <%= content_tag :div, class: "name #{'name-with-new-tag' if review.new?} #{'name-with-camera-icon' if review.images_count > 0}" do %>
+        <a class="link-product">
+          <%= review.product_name %>
+        </a>
+        <%= render 'reviews/tags', review: review %>
+      <% end %>
+      <div class="star-wrap">
+        <%= render 'reviews/score', review: review %>
+      </div>
+    </div>
+    <div class="review-content">
+      <a class="review-content-inner review-content-collapsed link-expand">
+        <div class="panel-body no-border">
+          <div class="message">
+            <span>
+              <% if @brand.review_message_all_collapsed_in_reviews_index? %>
+                <%= @brand.review_index_collapsed_title %>
+              <% else %>
+                <%= review.message.first_line(Settings.max_review_chars_per_line).html_safe %>
+              <% end %>
+              <%= content_tag(:span, '... 더보기', class: 'mall-link-color see-more') if review.message.multi_lines?(Settings.max_review_chars_per_line) %>
+              <br>
+            </span>
+          </div>
+        </div>
+        <div class="panel-footer no-border">
+          <div class="actions-container">
+            <div class="inline">
+              <%= content_tag :span, class: 'mall-link-color comments-link' do %>
+                <span class="comments-count"><%= review.comments_count %></span>개의 댓글이 있습니다
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="review-content-inner review-content-expanded"></div>
+    </div>
+  <% end %>
+  <%= content_tag :div, class: "r-contents show_all" do %>
+    <div class="info-container">
+      <span class="name"><%= review_user_display_name(review) %></span>
+      <% if review.display_user_grade? && display_user_grade %>
+        <span class="user-grade">
+          &nbsp;
+          [
+          <% if display_user_grade_icon %>
+            <%= image_tag user_grade_icon_url, class: 'user-grade-icon' %>
+          <% end %>
+          <%= review.brand_user_grade %>
+          ]
+        </span>
+      <% end %>
+      <% if @brand.review_show_created_at %>
+        <span class="date"><%= review.created_at.strftime("%Y. %m. %d") %></span>
+      <% end %>
+    </div>
+    <%= render 'reviews/images', review: review %>
+  <% end %>
+<% end %>
