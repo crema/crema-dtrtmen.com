@@ -1,0 +1,348 @@
+@import "../../lib/common";
+@import "compass/css3/transition";
+@import "../../lib/css3/opacity";
+
+#photo-review-popup-iframe {
+  #review-detail-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 25px;
+    height: 25px;
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  .link-to-product {
+    color: #323232;
+    text-decoration: none;
+    border: none;
+  }
+
+  #crema-review-water-mark {      
+    position: absolute;
+    bottom: 7px;
+    right: 10px;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: right;
+    @include opacity(0.65);
+    @include transition(opacity 0.15s);
+
+    &:hover {
+      @include opacity(1);
+    }
+
+    span {
+      color: #ddd;
+      @include opacity(0.3);
+      font-family: $font-default;
+      
+      &.mall-name {
+        @include opacity(0.5);
+        margin-right: 5px;
+      }
+
+      &.crema-name {
+        @include opacity(0.5);
+        margin-left: 4px;
+      }
+    } 
+  }
+}
+
+#photo-popup-container {
+  #photos-container {
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+    position: relative;
+  }
+
+  #photo-popup-content {
+    position: relative;
+    padding-right: 288px;
+    box-shadow: 0 7px 50px black;
+
+    .navigation-button {
+      position: absolute;
+      top: 50%;
+      margin-top: -127px;
+      cursor: pointer;
+
+      .button-container {
+        @include opacity(0.4);
+        overflow: hidden;
+        @include transition(opacity 0.2s);
+      }
+
+      &.hover {
+        .button-container {
+          @include opacity(1);
+        }
+      }
+    }
+
+    #image-prev {
+      left: 0;
+      padding: 100px 30px 100px 10px;
+    }
+
+    #image-next {
+      right: 288px;
+      padding: 100px 10px 100px 30px;
+    }
+
+    .photo-container {
+      display: none;
+      font-size: 0;
+      background-color: #ddd;
+
+      &.selected {
+        display: block;
+        position: relative;
+      }
+
+      #full-image-message {
+        font-family: $font-default;
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        padding: 14px;
+        @include opacity(0);
+        font-size: 12px;
+        width: 172px;
+        margin-left: -97px;
+        margin-top: -24px;
+        border-radius: 4px;
+        color: white;
+        background-color: black;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    #review-contents-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 288px;
+      background-color: white;
+      overflow: visible;
+
+      #info-container {
+        height: 170px;
+
+        .info {
+          padding: 20px 23px 16px 23px;
+          @include clearfix;
+
+          .product-thumbnail {
+            float: left;
+            font-size: 0;
+          }
+
+          .product-info {
+            float: right;
+            width: 160px;
+
+            .product-name {
+              font-family: $font-default;
+              color: #323232;
+              font-size: 12px;
+              font-weight: bold;
+              padding-top: 4px;
+            }
+
+            .product-score {
+              height: 14px;
+              padding: 6px 0 15px 0;
+            }
+
+            .user-name {
+              font-size: 11px;
+              color: #adadad;
+            }
+
+            .product-name, .user-name {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+
+          .review-like-result {
+            border: 1px solid #e7e7e7;
+            padding: 8px 9px;
+            position: absolute;
+            width: 222px;
+            height: 30px;
+            left: 23px;
+            top: 106px;
+
+            .review-like-info {
+              line-height: 15px;
+              color: #a4a4a4;
+              font-size: 11px;
+              font-family: $font-default;
+
+              strong {
+                color: #1f1f1f;
+              }
+            }
+          }
+        }
+      }
+
+      #message-container {
+        overflow: auto;
+        // real IE7 relative scrolling bug fix
+        position: relative;
+
+        #message-contents {
+          padding-left: 23px;
+          width: 242px;
+
+          .all-message {
+            position: relative;
+            padding: 7px 0 30px 0;
+            border-bottom: 1px dotted #eaeaea;
+            font-size: 11px;
+            color: #5a5a5a;
+            width: 242px;
+
+            .message {
+              padding: 0 5px;
+            }
+
+            .date {
+              position: absolute;
+              bottom: 3px;
+              width: 100%;
+              text-align: right;
+              color: #cbcbcb;
+            }
+          }
+
+          .feedback-container {
+            padding: 20px 0;
+            width: 242px;
+
+            .actions-container .like-action {
+              width: 100%;
+              @include clearfix;
+
+              .title {
+                margin-right: 0;
+                float: left;
+                line-height: 25px;
+                vertical-align: middle;
+              }
+
+              .link-like {
+                margin-right: 0;
+              }
+
+              .likable {
+                float: right;
+
+                .link-unlike {
+                  margin-right: 0;
+                }
+
+                .btn {
+                  width: 38px;
+                  margin-right: 0;
+                }
+              }
+
+              .like-score-container {
+                display: none;
+              }
+            }
+
+            .comments-container {
+              margin-right: 0;
+              padding: 10px;
+              width: 219px;
+
+              ul li {
+                border-top: 1px solid #eaeaea;
+
+                &:first-child {
+                  border-top: none;
+                }
+
+               .inner {
+                  .lpane {
+                    float: none;
+                    width: 120px;
+                    margin-left: 0;
+                    padding-bottom: 2px;
+                  }
+
+                  .rpane {
+                    padding-left: 0;
+                    color: #999;
+                    font-size: 11px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#zoom-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include opacity(0);
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+  cursor: zoom-out;
+
+  #zoom-image-container {
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.ie {
+  #zoom-image {
+    cursor: image-url('pc/cursors/zoom-out.cur'), pointer;
+  }
+
+  #photo-popup-container #photos-container {
+    cursor: image-url('pc/cursors/zoom-in.cur'), pointer;
+  }
+
+  .ie-png-fix {
+    background-color: transparent;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);   /* IE6 & 7 */
+    zoom: 1;
+  }
+
+  #photo-popup-container {
+    .ie-opacity-fix {
+      @include opacity(0);
+    }
+  }
+}

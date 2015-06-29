@@ -1,0 +1,5 @@
+<%= content_tag :div, class: "images-count-indicator image-count-#{images_count}" do %>
+  <% images_count.times do |i| %>
+    <%= content_tag :div,'', class: "indicator-dot index-#{i + 1} #{'selected' if !@photo_index.blank? && i + 1 == @photo_index.to_i}" %>
+  <% end %>
+<% end %>

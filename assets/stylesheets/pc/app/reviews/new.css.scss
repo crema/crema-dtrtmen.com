@@ -1,0 +1,212 @@
+@import "../../lib/common";
+@import "compass/css3/transition";
+@import "compass/css3/opacity";
+
+body.reviews.new {
+  .star-rating-container {
+    font-size: 20px;
+  }
+
+  .image-field {
+    width: 17%;
+    position: relative;
+    display: inline-table;
+    padding: 0 5px 10px 5px;
+    float: left;
+
+    $preview_image_size: 56px;
+
+    .wrap {
+      position: relative;
+      background: #c8c8c8;
+      overflow: hidden;
+      width: $preview_image_size;
+      height: $preview_image_size;
+    }
+
+    img.size-support {
+      width: 100%;
+      height: auto;
+      min-width: 100px;
+    }
+
+    .input-image-container {
+      position: absolute;
+      top: 50%;
+      margin-top: -37px;
+      right: 0;
+      left: 0;
+      text-align: center;
+    }
+
+    .preview-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 0;
+      background: white;
+      text-align: center;
+
+      .remove-preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 1;
+        text-align: center;
+        background: black;
+        cursor: pointer;
+        @include opacity(0.4);
+        @include transition(opacity 0.3s);
+
+        div {
+          position: absolute;
+          text-align: center;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          margin-top: -8px;
+          @include transition(opacity 0.3s);
+        }
+
+        &.hover {
+          @include opacity(0.8);
+        }
+      }
+    }
+  }
+
+  .image-fields-container {
+    font-size: 0;
+    padding-bottom: 5px;
+    margin: 0 -5px;
+  }
+
+  .select2-container.select-rating {
+    display: block;
+    padding: 7px 10px;
+    font-size: 12px;
+
+    .select2-choice {
+      > .select2-chosen {
+        .item {
+          position: relative;
+
+          .text {
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+
+    .select2-chosen {
+      line-height: 13px;
+      padding-top: 7px;
+    }
+  }
+
+  ul li div.select2-result-label {
+    font-size: 12px;
+  }
+
+  #select2-drop {
+    box-shadow: none;
+    border-radius: 0;
+
+    &.select2-drop-active {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .item {
+      position: relative;
+
+      .text {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .textarea-container {
+    padding-right: 20px;
+  }
+
+  .review-option-fields {
+    display: none;
+    font-size: 11px;
+    padding: 15px 20px 0 20px;
+
+    &.anim {
+      @include transition(all 0.2s ease);
+    }
+
+    .review-option-field {
+      @include clearfix;
+      margin-top: 2px;
+
+      &.first {
+        margin-top: 0;
+      }
+
+      .review-option-field-title {
+        float: left;
+        width: 30%;
+        color: #a0a0a0;
+        height: 17px;
+        line-height: 17px;
+      }
+
+      .review-option-field-content {
+        float: left;
+        width: 70%;
+      }
+
+      .review-option-field-value {
+        border: 1px solid #dadada;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1px 5px;
+      }
+
+      input.review-option-field-value {
+        color: #686868;
+        height: 17px;
+      }
+
+      .select2-container.review-option-field-value {
+        .select2-choice {
+          line-height: 13px;
+          height: 13px;
+
+          .sprites-icon-drop-down {
+            top: 3px;
+          }
+        }
+      }
+    }
+
+    .divider {
+      height: 0;
+      border-bottom: 1px dotted #dadada;
+      padding: 0 10px;
+      margin: 15px -10px 5px -10px;
+    }
+  }
+
+  textarea#review_message {
+    overflow: hidden;
+  }
+
+  .limit-count-container .limit-counter {
+    right: 20px;
+  }
+}

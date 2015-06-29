@@ -1,0 +1,85 @@
+@import "../../lib/common";
+
+.review-options {
+  font-size: 12px;
+  border: 1px solid #dadada;
+  padding: 15px;
+  margin-bottom: 18px;
+  margin-right: 30px;
+  max-width: 800px;
+
+  .review-option {
+    @include clearfix;
+    margin-top: 4px;
+    color: #494949;
+
+    &.first {
+      margin-top: 0;
+    }
+
+    .option-key {
+      margin-left: 12px;
+      color: #bbb;
+    }
+
+    .first-option .option-key {
+      margin-left: 0;
+    }
+
+    .option-value {
+      margin-left: 4px;
+    }
+
+    .review-option-title {
+      float: left;
+      width: 15%;
+      font-weight: bold;
+    }
+
+    .review-option-content {
+      float: left;
+      width: 85%;
+      color: #777;
+
+      // IE7 needs a little margin to keep in single line
+      body.ie-7 & {
+        width: 84%;
+      }
+    }
+  }
+}
+
+.photo_review_popup {
+  .review-options {
+    margin-right: 0;
+    margin-bottom: 7px;
+    border: none;
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px dashed #ddd;
+    padding: 15px 5px;
+
+    .review-option {
+      .review-option-title {
+        width: 40%;
+      }
+
+      .review-product-option {
+        display: block;
+        margin-top: 3px;
+
+        &.first-option {
+          margin-top: 0;
+        }
+
+        .option-key {
+          margin-left: 0;
+        }
+      }
+
+      .review-option-content {
+        width: 60%;
+        text-align: right;
+      }
+    }
+  }
+}

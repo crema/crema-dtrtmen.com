@@ -1,0 +1,101 @@
+@import "../../lib/common";
+
+#review-notice {
+  padding-top: 3px;
+
+  #review-notice-top {
+    padding: 0 14px 9px 10px;
+    @include clearfix;
+
+    li {
+      font-size: 11px;
+      color: #606060;
+      font-family: $font-default;
+
+      &:first-child {
+        float: left;
+
+        span {
+          @include inline-block;
+
+          &.notice-count {
+            font-size: 19px;
+            padding-right: 3px;
+          }
+
+          &.notice-count-text {
+            vertical-align: top;
+            line-height: 17px;
+          }
+        }
+      }
+
+      &.review-notice-close {
+        float: right;
+        line-height: 19px;
+      }
+    }
+  }
+
+  #review-notice-container {
+    border: 1px solid #e1e1e1;
+    padding: 16px 28px;
+    margin-bottom: 5px;
+
+    li {
+      .link-expand-review-notice {
+        @include clearfix;
+        display: block;
+        padding: 11px 0;
+
+        &:hover {
+          background-color: #f8f8f8;
+        }
+      }
+
+      .review-notice-title {
+        float: left;
+        font-size: 13px;
+        line-height: 13px;
+        font-family: $font-default;
+        color: #2d2d2d;
+
+        strong {
+          font-weight: bold;
+          padding-right: 6px;
+        }
+      }
+
+      .review-notice-date {
+        float: right;
+        font-size: 13px;
+        line-height: 13px;
+        font-family: $font-default;
+        color: #b7b7b7;
+      }
+    }
+  }
+
+  .review-notice-more {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 6px;
+    padding-bottom: 15px;
+  }
+
+  .brand-notice-content {
+    position: relative;
+    border: 1px solid #e2e2e2;
+    margin: 7px 0;
+    padding: 20px 15px;
+    text-align: left;
+  }
+
+  .brand_notice {
+    border-bottom: 1px dashed #eee;
+
+    &.last {
+      border-bottom: none;
+    }
+  }
+}

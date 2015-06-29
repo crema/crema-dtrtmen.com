@@ -1,0 +1,59 @@
+.input-file {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 !important;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 200px;
+  direction: ltr;
+}
+
+form[data-validate] {
+  .field_with_errors {
+    display: none;
+  }
+}
+
+.select2-container {
+  &.select-rating {
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+  }
+
+  .select2-choice {
+    > .select2-chosen {
+      margin-right: 0;
+
+      .item {
+        .text {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .sprites-icon-drop-down {
+      position: absolute;
+      top: 9px;
+      right: 0;
+    }
+  }
+}
+
+.limit-count-container {
+  position: relative;
+
+  .limit-counter {
+    position: absolute;
+    bottom: 5px;
+    right: 7px;
+    font-size: 12px;
+    color: #626262;
+  }
+}
+
+select.select2 {
+  display: none;
+}

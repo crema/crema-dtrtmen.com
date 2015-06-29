@@ -1,0 +1,107 @@
+.review-options-search {
+  // FIX - IE7 dropdown z-index problem
+  body.ie-7 & {
+    z-index: 1;
+  }
+
+  border-bottom: 1px solid #e5e5e5;
+  padding: 7px 0;
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  height: 15px;
+
+  ul.review_option_types {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    li.review_option_type {
+      float: left;
+      font-size: 13px;
+      color: #b8b8b8;
+      height: 30px;
+      margin-left: 30px;
+      position: relative;
+
+      a.link-review-option-type {
+        line-height: 30px;
+        display: block;
+      }
+
+      .type-name {
+        padding-right: 21px;
+        line-height: 30px;
+      }
+
+      span.sprites-icon-drop-down {
+        position: absolute;
+        top: 14px;
+        right: 3px;
+        zoom: 0.8;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    min-width: 80px;
+    top: 27px;
+    right: 0px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    background: white;
+    z-index: 1;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.03);
+    display: none;
+  }
+
+  ul.review_option_search_values {
+    padding: 10px 15px;
+
+    li.review_option_search_value {
+      line-height: 20px;
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  .search-container {
+    padding: 10px 30px 10px 10px;
+
+    input {
+      width: 80px;
+    }
+
+    .link-search {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
+}
+
+body.products {
+  .review-options-search {
+    margin: 0;
+    position: relative;
+    top: -6px;
+    border-bottom: none;
+  }
+}
+
+.review-options-search-toggle {
+  float: right;
+  color: #949494;
+  line-height: 19px;
+  font-size: 13px;
+  position: relative;
+
+  .sprites-search {
+    padding-right: 10px;
+    position: absolute;
+    top: 3px;
+    left: -21px;
+  }
+}

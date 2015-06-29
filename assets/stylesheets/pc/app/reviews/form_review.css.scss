@@ -1,0 +1,77 @@
+@import "../../lib/common";
+@import "compass/css3/transition";
+
+form.form-product-review {
+  &.new_review {
+    .review-option-fields {
+      display: none;
+    }
+  }
+
+  &.edit_review {
+    .review-option-fields {
+      margin-top: 0;
+    }
+  }
+
+  .review-option-fields {
+    margin-top: -224px;
+    font-size: 13px;
+    border: 1px solid #dadada;
+    padding: 15px 20px;
+    margin-bottom: 18px;
+
+    &.anim {
+      @include transition(all 0.2s ease);
+    }
+
+    .review-option-field {
+      @include clearfix;
+      margin-top: 4px;
+
+      &.first {
+        margin-top: 0;
+      }
+
+      .review-option-field-title {
+        float: left;
+        width: 15%;
+        color: #a0a0a0;
+        height: 25px;
+        line-height: 25px;
+      }
+
+      .review-option-field-content {
+        float: left;
+        width: 85%;
+      }
+
+      .review-option-field-value {
+        border: 1px solid #dadada;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 2px 10px;
+        font-size: 13px;
+
+        body.ie-7 & {
+          width: 95%;
+        }
+      }
+
+      input.review-option-field-value {
+        height: 25px;
+      }
+
+      .select2-container.review-option-field-value {
+        .select2-choice {
+          line-height: 19px;
+          height: 19px;
+
+          .sprites-icon-drop-down {
+            top: 6px;
+          }
+        }
+      }
+    }
+  }
+}

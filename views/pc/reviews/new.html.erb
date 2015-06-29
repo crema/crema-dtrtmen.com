@@ -1,0 +1,102 @@
+<% title(t("reviews.create_review")) %>
+<% content_for :content do %>
+  <% if @review %>
+    <%= content_tag :div, nil, id: 'data', data: {
+      review_popup_direction: @brand.review_popup_direction,
+      review_popup_fullscreen: @brand.review_popup_fullscreen,
+      review_popup_offset_x: @brand.review_popup_offset_x,
+      review_popup_offset_y: @brand.review_popup_offset_y,
+      } %>
+    <%= content_tag :div, class: "popup_new #{'fullscreen-popup' if @brand.review_popup_fullscreen}", id: 'crema-content' do %>
+      <div class="fullscreen-popup-background ie-png-fix"></div>
+      <div class="fullscreen-popup-content-container">
+        <div id="review-container" class="fullscreen-popup-content">
+          <div class="review-column-left">
+            <div class="review-owner-information">
+              <% if @review.brand_user %>
+                <div class="review-user-name"><%= @review.brand_user.name %> <%= @brand.review_username_title %></div>
+              <% end %>
+              <div class="review-title"><%= @brand.review_popup_title %></div>
+              <% if !@brand.review_popup_reward_detail.blank? %>
+                <div class="review-information-detail-button"><%= @brand.review_popup_reward_detail %></div>
+              <% end %>
+            </div>
+            <div id="lista" class="als-container">
+              <span class="als-prev"><div class="review-itemlist-backward-button">▲</div></span>
+              <div class="review-itemlist-container">
+                <div>
+                  <div class="als-viewport">
+                    <ul class="als-wrapper">
+                      <% @pending_reviews.each_with_index do |pending_review, i| %>
+                        <%
+                        sub_order = pending_review[:sub_order]
+                        product = pending_review[:product]
+                        %>
+                        <%= content_tag :li, class: "als-item pending-review pending-review-product_#{product.id}" do %>
+                          <%= link_to selection_reviews_path(sub_order_id: sub_order.try(:id), product_id: product.id, review_source: @review.review_source), remote: true, class: 'link-select-review' do %>
+                            <%= image_tag product.image_url(:middle), class: 'slide_image smooth' %>
+                            <div class="review-listitem-information hoverable <%= 'first-photo-review' if @brand.review_show_first_photo && product.first_photo_review? %> <%= 'review-listitem-information-selected' if i == 0 %>">
+                              <div class="listitem-name"><%= product.name %></div>
+                              <% if @brand.review_popup_display_no_mileage_message && product.no_mileage? %>
+                                <div class="review-listitem-information-tag">적립금 제외 상품</div>
+                              <% elsif @brand.review_show_first_photo %>
+                                <% if product.first_photo_review? %>
+                                  <div class="review-listitem-information-tag first-photo-review-comment">
+                                    최초 포토리뷰 작성!<br>
+                                    <span class="first-photo-review-comment-reward">
+                                      <% if @brand.review_popup_first_reward_message && @brand.review_popup_first_reward_message != '' && @brand.review_popup_first_reward_message != nil %>
+                                        <%= @brand.review_popup_first_reward_message %>
+                                      <% elsif @brand.give_mileage_nth_photo_review(0) > 0 %>
+                                        적립금 <%= @brand.give_mileage_nth_photo_review(0) %>원 더!
+                                      <% else %>
+                                        지금 리뷰를 작성 해 주세요!
+                                      <% end %>
+                                    </span>
+                                  </div>
+                                <% else %>
+                                  <div class="listitem-reward"><%= @brand.review_popup_more_reviews %></div>
+                                <% end %>
+                              <% else %>
+                                <div class="listitem-reward"><%= @brand.review_popup_more_reviews %></div>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                      <li class="als-item last-review-item">작성할 리뷰가 없습니다</li>
+                      <% if @pending_reviews.count == 1 %>
+                        <li class="als-item" style="pointer-events: none;"></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <span class="als-next"><div class="review-itemlist-forward-button">▼</div></span>
+            </div>
+          </div>
+          <div class="review-column-right">
+            <%= render 'new_popup', resources: @reviews %>
+          </div>
+          <div class="review-close-button">
+            <ul>
+              <% if @brand.review_enable_popup_block %>
+                <li class="link-block-popup">X 다시 보지 않기</li>
+              <% end %>
+              <li class="popup-not-view-today">X <%= @brand.review_popup_not_today_title %></li>
+              <li class="popup-close">X 닫기</li>
+            </ul>
+          </div>
+          <div class="review-info-message"><%= @brand.review_reward_notice_html %></div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <% if !current_user %>
+      <div id="require-login"></div>
+    <% else %>
+      <%= content_tag :div, id: 'no-pending-reviews', data: {alert: !params[:auto]} do %>
+        작성할 리뷰가 없습니다.
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
