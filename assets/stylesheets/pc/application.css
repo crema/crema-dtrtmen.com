@@ -10,7 +10,6 @@
  *
  *= require ./main
  *= require ./lib/nanumgothic
- *= require ./lib/dtrt_fonts
  *= require_tree ./app
  *= require nanoscroller
  *= require select2
