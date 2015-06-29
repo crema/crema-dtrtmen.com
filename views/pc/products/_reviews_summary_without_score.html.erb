@@ -5,13 +5,7 @@
 %>
 <div id="review-photo-thumbnails" class="photo-review-digits-count-<%= photo_reviews_count.to_s.length %>">
   <div id="review-photo-summary">
-    <div class="count-text"><span class="count"><%= product.photo_reviews_count %></span>개의 포토리뷰가 있습니다</div>
-    <div class="show-all-photo-reviews">
-      <%= content_tag :a, class: "link-photo-reviews #{'selected' if @review_filter == ReviewFilterType::PHOTO}", data: {filter: ReviewFilterType::PHOTO} do %>
-        포토리뷰 모아보기
-      <span class="sprites-check"></span>
-      <% end %>
-    </div>
+    <div class="count-text">고객포토리뷰</div>
   </div>
   <ul class="product-thumbnail-container">
     <% brand = @brand %>
