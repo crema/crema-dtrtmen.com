@@ -15,7 +15,6 @@
         cols: 5000, # HACK - IE8 textarea scroll bug
         data: {login_required: !@brand.review_enable_nonmember_review?, up_counter: true, minimum_message_length: @brand.give_mileage_minimum_message_length},
         ) %>
-      <div class='limit-counter'>0</div>
       <div class="review-input-photos">
         <div class="input-button review-photos">
           <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: 4, images_count: review.images_count}  do %>
