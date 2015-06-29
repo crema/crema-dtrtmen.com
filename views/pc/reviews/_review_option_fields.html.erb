@@ -1,0 +1,30 @@
+<% if Review::OptionType.count > 0 %>
+  <% review = f.object %>
+  <div class="review-option-fields">
+    <% Review::OptionType.sorted.visible.each_with_index do |option_type, i| %>
+      <% option = review.option(option_type.id) %>
+      <%= f.fields_for :options, option do |r| %>
+        <% option_type = option.option_type %>
+        <%= content_tag :div, class: "review-option-field #{'first' if i == 0}" do %>
+          <%= r.hidden_field :review_option_type_id %>
+          <div class="review-option-field-title"><%= option_type.name %> <%= "(#{option_type.unit})" if option_type.field_type == ReviewOptionFieldType::NUMBER && !option_type.unit.blank? %> <%= '*' if option_type.required %></div>
+          <div class="review-option-field-content">
+            <% case option_type.field_type %>
+            <% when ReviewOptionFieldType::NUMBER %>
+              <%= r.text_field :value, class: "review-option-field-value review-option-field-value-number #{'required' if option_type.required}", data: {message: option_type.validate_message}, validate: false %>
+            <% when ReviewOptionFieldType::SELECT %>
+              <% if option.options %>
+                <%= r.select :value, option_type.option_values.split(',').collect {|o| [o, o]}, {include_blank: "-#{option_type.name} 선택-"}, class: "review-option-field-value select2 #{'required' if option_type.required}", data: {message: option_type.validate_message}, validate: false %>
+              <% else %>
+                <%= r.text_field :value, class: "review-option-field-value #{'required' if option_type.required}", data: {message: option_type.validate_message}, validate: false %>
+              <% end %>
+            <% else %>
+              <%= r.text_field :value, class: "review-option-field-value #{'required' if option_type.required}", data: {message: option_type.validate_message}, validate: false %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= content_tag(:div, nil, class: 'divider') if local_assigns[:divider] %>
+  </div>
+<% end %>

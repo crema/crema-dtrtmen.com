@@ -1,0 +1,3 @@
+<% if @reviews.total_pages > 1 %>
+  <%= paginate @reviews, remote: true, window: kaminari_window(params[:page].to_i, @reviews.total_pages) %>
+<% end %>

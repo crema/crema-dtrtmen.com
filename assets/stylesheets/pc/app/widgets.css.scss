@@ -1,0 +1,52 @@
+@import "../lib/common";
+
+.widget {
+  padding: 44px 0;
+
+  &:first-child, &.first {
+    padding-top: 0;
+  }
+
+  .widget-heading {
+    @include clearfix;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dadada;
+    font-family: $font-default;
+
+    .widget-title {
+      font-size: 24px;
+      float: left;
+      height:40px;
+
+      .weak {
+        color: #8f8f8f;
+      }
+
+      strong, .strong {
+        font-weight: bold;
+      }
+
+      .divider {
+        margin: 0 8px;
+        color: #7d7d7d;
+      }
+
+      a.pull-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #b0b0b0;
+      }
+    }
+  }
+
+  .widget-body {
+    border-bottom: 1px solid #dadada;
+  }
+
+  .widget-footer {
+    text-align: center;
+    padding-top: 25px;
+  }
+}
