@@ -3,10 +3,8 @@
   review_images = product.review_images([30, photo_reviews_count].min)
   reviews = product.visible_reviews
 %>
+<div>고객포토리뷰</div>
 <div id="review-photo-thumbnails" class="photo-review-digits-count-<%= photo_reviews_count.to_s.length %>">
-  <div id="review-photo-summary">
-    <div class="count-text">고객포토리뷰</div>
-  </div>
   <ul class="product-thumbnail-container">
     <% brand = @brand %>
     <% review_images.each_with_index do |review_image, index| %>
