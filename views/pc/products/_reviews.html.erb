@@ -1,4 +1,5 @@
 <%= content_tag :div, class: "widget widget-reviews pagination-list #{'hidden' if !@product.visible_reviews?} #{'no-data' if @reviews.total_count == 0}" do %>
+  <% review_option_types = @brand.searchable_options %>
   <div class="widget-body">
     <% if !review_option_types.blank? %>
       <%= render 'reviews/review_options_search', hidden: @review_option_filter.empty?, review_option_types: review_option_types %>
