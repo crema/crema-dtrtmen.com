@@ -1,0 +1,38 @@
+$content-width: 720px;
+$min-width: 320px;
+$mobile-topbar-height: 53px;
+
+$link-color: #77b677;
+$panel-border: #e4e4e4;
+
+$font-default: "나눔고딕", "NanumGothic", "맑은 고딕", "Malgun Gothic", "돋움", "Dotum", "굴림", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$base-font-size: 12px;
+$base-line-height: 20px;
+$base-border-radius: 4px;
+
+$z-index-watermark: 20000;
+$z-index-modal: 100;
+$z-index-modal-backdrop: 90;
+$z-index-menu: 45;
+$z-index-topbar: 40;
+
+$grey-lightest: #eee;
+$grey-lighter: #ececec;
+$grey-light: #999;
+$grey: #666;
+$grey-dark: #333;
+
+$mobile-inner-line: #efefef;
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+  }
+}

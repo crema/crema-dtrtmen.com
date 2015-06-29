@@ -1,0 +1,43 @@
+$content-width: 720px;
+$min-width: 320px;
+
+$link-color: #77b677;
+
+$font-default: "나눔고딕", "NanumGothic", "맑은 고딕", "Malgun Gothic", "돋움", "Dotum", "굴림", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$base-font-size: 12px;
+$base-line-height: 20px;
+$base-border-radius: 4px;
+
+$z-index-watermark: 20000;
+
+@mixin clearfix {
+  body.ie & {
+    height: 1%;
+  }
+
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+  }
+}
+
+@mixin grayscale($scale) {
+  filter: grayscale($scale);
+  filter: gray;
+  -webkit-filter: grayscale($scale);
+  -moz-filter: grayscale($scale);
+  -ms-filter: grayscale($scale);
+  -o-filter: grayscale($scale);
+}
+
+@mixin inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}

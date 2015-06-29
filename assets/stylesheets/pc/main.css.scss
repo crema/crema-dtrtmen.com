@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@import "lib/common";
+@import "compass/css3/opacity";
+@import "lib/dtrt_fonts";
+
+body {
+  font-family: '돋움', Dotum, Helvetica, 'Apple SD Gothic Neo', Sans-serif;
+  font-size: 12px;
+  background-color: transparent;
+}
+
+body, div, ul, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, button, p, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: none;
+  border: 0;
+}
+
+textarea, input {
+  outline: 0;
+}
+
+button, input {
+  border: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+strong {
+  color: #333333;
+}
+
+.lfloat {
+  float: left;
+}
+
+.rfloat {
+  float: right;
+}
+
+i {
+  @include inline-block;
+}
+
+.review-contents-style {
+  line-height: 1.6;
+}
+
+.hidden {
+  display: none;
+}
+
+.inline {
+  @include inline-block;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.relative {
+  position: relative;
+}
+
+#test-server-watermark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 3px;
+  background-color: #e25844;
+  color: white;
+  font-size: 8px;
+  pointer-events: none;
+  z-index: $z-index-watermark;
+  @include opacity(0.7);
+}
+
+// canmart.co.kr 카테고리 클릭시 배경 하얗게 변함 https://app.asana.com/0/6477513906633/12943304127545
+body.ie.ie-8 {
+  .select2-drop-mask {
+    background: transparent;
+  }
+}
+
+#data {
+  display: none;
+}
