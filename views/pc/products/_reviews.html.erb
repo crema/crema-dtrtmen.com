@@ -1,17 +1,4 @@
 <%= content_tag :div, class: "widget widget-reviews pagination-list #{'hidden' if !@product.visible_reviews?} #{'no-data' if @reviews.total_count == 0}" do %>
-  <div class="widget-heading">
-    <span class="sort-type selected">
-      <strong><%= ReviewSort.t(@review_sort) %></strong>
-      리뷰 (<%= content_tag :span, number_with_delimiter(@reviews.total_count), class: 'reviews-count' %>)
-    </span>
-    <% @brand.review_sort_types(ReviewGroupBy::NONE).select{|r| r != @review_sort}.each do |review_sort_type| %>
-    <span class="review-sort-type-column"> | </span><%= link_to ajax_path(order: review_sort_type), remote: true do %><span class="sort-type"><%= ReviewSort.t(review_sort_type) %></span><% end %>
-    <% end %>
-    <% review_option_types = @brand.searchable_options %>
-    <% if !review_option_types.blank? %>
-      <a class="review-options-search-toggle"><i class="sprites-search"></i>옵션별 검색 하기</a>
-    <% end %>
-  </div>
   <div class="widget-body">
     <% if !review_option_types.blank? %>
       <%= render 'reviews/review_options_search', hidden: @review_option_filter.empty?, review_option_types: review_option_types %>
