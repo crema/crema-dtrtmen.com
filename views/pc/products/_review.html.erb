@@ -6,7 +6,7 @@
       <div class="col score">
         <div class="star-rating-container">
           <% (1..5).each do |i| %>
-            <%= content_tag :span, nil, class: "#{review.score && i > review.score ? 'sprites-star-empty' : 'sprites-star-full'}" %>
+            <%= content_tag :span, nil, class: "#{review.score && i > review.score ? 'star-empty' : 'star'}" %>
           <% end %>
         </div>
       </div>
