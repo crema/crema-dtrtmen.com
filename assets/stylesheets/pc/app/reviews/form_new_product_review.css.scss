@@ -13,7 +13,6 @@
     font-size: 0;
     height: auto;
     margin-bottom: 8px;
-    border: 3px solid #3a3637;
   }
 
   .input-area-container {
@@ -27,8 +26,10 @@
   }
 
   textarea {
-    min-height: 100px;
-    height: auto;
+    background-color:#fffdef;
+    border: 3px solid #3a3637;
+    min-height: 120px;
+    height: 120px;
     font-size: 14px;
     line-height: 16px;
     margin: 0px;
