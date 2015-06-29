@@ -28,7 +28,7 @@
     <div class="input-area-container">
       <div class="field-box add-image-container" style="cursor: pointer;">
         <span class="sprites-icon-camera-black inline"></span>
-        <div class="description" data-org-text="+ 사진을 추가해 주세요">+ 사진을 추가해 주세요</div>
+        <div class="description" data-org-text="사진추가">사진추가</div>
       </div>
       <div class="field-box-container">
         <div class="field-box">
@@ -39,7 +39,7 @@
       <%= f.hidden_field :review_source %>
       <%= f.hidden_field :sub_order_id %>
       <%= content_tag :button, class: 'submit hoverable', type: 'submit', data: {disable_with: "저장 중..."} do %>
-        <div class="title"><span class="fa fa-check-circle-o"></span><%= review.new_record? ? '리뷰 등록하기' : '리뷰 수정하기' %></div>
+        <div class="title"><%= review.new_record? ? 'SUBMIT' : 'SUBMIT' %></div>
       <% end %>
     </div>
     <script type="text/x-jquery-tmpl" class="new-image-field">
