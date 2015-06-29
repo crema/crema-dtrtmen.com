@@ -26,10 +26,8 @@
       
       
       <% if !@brand.reviews_index_url.blank? %>
-        <%= content_tag :div, @brand.reviews_index_button_title, class: 'rfloat btn show-reviews-index', data: {reviews_index_url: @brand.reviews_index_url} %>
+        <%= content_tag :div, @brand.reviews_index_button_title, class: 'btn show-reviews-index', data: {reviews_index_url: @brand.reviews_index_url} %>
       <% end %>
-      
-      <div>고객포토리뷰</div>
       <div class="product-reviews-summary <%= only_thumbnail %>">
         <%= content_tag :div, class: 'score-summary', data: {url: ajax_path(except: [:scores, :filter, :page], atarget: 'reviews')} do %>
           <%= render 'reviews_summary', product: @product, external_widget: @external_widget %>
