@@ -3,6 +3,102 @@
 @import "compass/css3/opacity";
 
 body.products.reviews, #review-edit-form {
+  ul.reviews, ul.header {
+    width: 100%;
+    border-spacing: 0;
+    position: relative;
+
+    .col {
+      display: inline-block;
+      text-align: center;
+
+      &.index {
+        width: 82px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      &.photo {
+        width: 36px;
+        position: absolute;
+        top: 0;
+        left: 82px;
+      }
+
+      &.title {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        padding-left: 171px;
+        padding-right: 267px;
+
+        a {
+          color: #434343;
+        }
+      }
+
+      &.author {
+        width: 121px;
+        position: absolute;
+        top: 0;
+        right: 106px;
+        text-align: left;
+        padding-left: 40px;
+      }
+
+      &.score {
+        width: 106px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    li.review {
+      line-height: 28px;
+      color: #434343;
+      border-top: 0;
+      border-bottom: 1px solid #ededed;
+      padding: 0 !important;
+
+      .title {
+        text-align: left;
+      }
+    }
+
+    .star-rating-container span {
+      vertical-align: middle;
+      margin-top: 5px;
+    }
+
+    .sprites-camera {
+      width: 20px;
+      height: 15px;
+      display: block;
+      position: absolute;
+      top: 7px;
+      left: 8px;
+    }
+
+    .sprites-star-full, .sprites-star-empty {
+      width: 14px;
+      height: 9px;
+      display: inline-block;
+    }
+
+    .review-content-expanded {
+      display: none;
+      padding: 30px 34px 42px 34px !important;
+    }
+
+    .expanded .review-content-expanded {
+      display: block;
+    }
+  }
+
   .new-review.no-writable {
     padding-bottom: 0;
   }

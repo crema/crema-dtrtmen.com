@@ -1,21 +1,8 @@
-<%= content_tag :div, class: "widget widget-reviews pagination-list #{'hidden' if !@product.visible_reviews?} #{'no-data' if @reviews.total_count == 0}" do %>
-  <% review_option_types = @brand.searchable_options %>
-  <div class="widget-body">
-    <% if !review_option_types.blank? %>
-      <%= render 'reviews/review_options_search', hidden: @review_option_filter.empty?, review_option_types: review_option_types %>
-    <% end %>
-    <% if @reviews.empty? %>
-      <ul class="reviews reviews-product"></ul>
-    <% else %>
-      <ul class="reviews reviews-product">
-        <%= render partial: 'products/review', collection: @reviews, as: 'review', locals: {external_widget: local_assigns[:external_widget]} %>
-      </ul>
-    <% end %>
-    <%= content_tag :div, '리뷰가 없습니다.', class: 'no-data-message' %>
+<%= content_tag :div, class: "widget widget-reviews pagination-list #{'no-data' if @reviews.total_count == 0}" do %>
+  <ul class="reviews reviews-product">
+    <%= render partial: 'products/review', collection: @reviews, as: :review %>
+  </ul>
+  <div class="widget-footer">
+    <%= paginate @reviews, params: {review_id: nil}, remote: true, window: kaminari_window(params[:page].to_i, @reviews.total_pages) %>
   </div>
-  <% if @reviews.total_pages > 1 %>
-    <div class="widget-footer">
-      <%= render 'pagination' %>
-    </div>
-  <% end %>
 <% end %>
