@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="col title">
-        <%= content_tag :span, nil, class: "#{'sprites-camera' if review.images_count > 0}" %>
+        <%= content_tag :span, nil, class: "#{'dtrt-camera-icon-black' if review.images_count > 0}" %>
         <%= content_tag :a, review.message.first_line(Settings.max_review_chars_per_line).html_safe, class: 'link-expand' %>
         <%= "[#{review.comments_count}]" if review.comments_count > 0 %>
       </div>
