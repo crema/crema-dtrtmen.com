@@ -4,7 +4,7 @@ like = get_like(review)
 %>
 <%= content_tag :div, class: "inline like-action #{(like.score > 0 ? 'liked' : 'unliked') if likes}", data: {url: like_review_path(review)} do %>
   <div class="inline likable">
-    <a class="link-like btn">예
+    <a class="link-like btn">추천하기
     </a>
   </div>
   <div class="inline like-score-container">
