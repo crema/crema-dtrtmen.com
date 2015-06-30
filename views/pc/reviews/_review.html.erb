@@ -16,6 +16,7 @@
         <%= "[#{review.comments_count}]" if review.comments_count > 0 %>
       </div>
       <div class="col author"><%= review_user_display_name(review) %></div>
+      <div class="col icon"><%= content_tag :span, nil, class: "dtrt-select-down" %></div>
       <div class="review-content-expanded"></div>
     </div>
   <% end %>

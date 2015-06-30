@@ -1,0 +1,24 @@
+<% editable = comment.editable?(current_user) %>
+<%= content_tag :li, class: 'comment hoverable', id: "comment_#{comment.new_record? ? "{{id}}" : comment.id}" do %>
+  <div class="inner">
+    <div class="lpane">
+      <%= content_tag :div, comment.user_display_name, class: 'author-name', title: comment.user_display_name %>
+      <%= content_tag :div, comment.created_at.try(:strftime, '%Y.%m.%d'), class: 'comment-created-at' %>
+    </div>
+    <div class="rpane">
+      <div class="error-message rfloat"></div>
+      <div class="message">
+        <span><%= comment.message.html %></span>
+        <% if editable %>
+          <%= text_field_tag :message, comment.message, class: 'comment-message-edit', data: {update_url: comment_path(comment)} %>
+        <% end %>
+      </div>
+    </div>
+    <% if editable %>
+      <div class="action-comment-container">
+        <a class="link-edit-comment btn-small btn-white">수정</a>
+        <%= link_to '삭제', comment_path(comment), method: :delete, remote: true, class: 'link-delete-comment btn-small btn-white', data: {confirm: '정말로 삭제하시겠습니까?'} %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

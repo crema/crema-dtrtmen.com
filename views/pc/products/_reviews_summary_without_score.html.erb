@@ -3,8 +3,11 @@
   review_images = product.review_images([30, photo_reviews_count].min)
   reviews = product.visible_reviews
 %>
-<div>고객포토리뷰</div>
-<div id="review-photo-thumbnails" class="photo-review-digits-count-<%= photo_reviews_count.to_s.length %>">
+<div class="photo-thumbnails-header">
+  <div class="photo-thumbnails-header__title">고객포토리뷰</div>
+  <div class="photo-thumbnails-header__count"><span class="count"><%= photo_reviews_count %></span>개의 포토리뷰가 있습니다.</div>
+</div>
+<div id="review-photo-thumbnails">
   <ul class="product-thumbnail-container">
     <% brand = @brand %>
     <% review_images.each_with_index do |review_image, index| %>

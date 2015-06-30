@@ -1,0 +1,35 @@
+<div class="panel-body no-border">
+  <div class="review-summary">
+    <div class="lfloat">
+      <div class="review-summary__author-title">
+        <%= review_user_display_name(review) %>님의 평가
+      </div>
+      <div class="score">
+        <div class="score__icons">
+          <% (1..5).each do |i| %>
+            <%= content_tag :span, nil, class: "#{review.score && i > review.score ? 'star-empty' : 'star'}" %>
+          <% end %>
+        </div>
+        <div class="score__text"><%= ReviewScore.t(review.score) %></div>
+      </div>
+    </div>
+    <div class="rfloat">
+      <div class="total-score">
+        <div class="total-score__number"><%= review.total_score %></div>
+        <div class="total-score__text">추천수</div>
+      </div>
+    </div>
+  </div>
+  <%= render 'reviews/images', review: review, li_class: 'grid-4', external_widget: @external_widget %>
+  <%= render 'reviews/message', review: review %>
+</div>
+<div class="panel-footer no-border">
+  <div class="actions-container">
+    <div class="inline">
+      <a class="mall-link-color comments-link link-collapse">리뷰 접기</a>
+    </div>
+    <div class="inline divider">|</div>
+    <%= render 'reviews/action_likes', review: review %>
+  </div>
+  <%= render 'reviews/comments', review: review, external_widget: @external_widget %>
+</div>

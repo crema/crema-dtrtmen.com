@@ -17,6 +17,7 @@ body.users.reviews {
     width: 100%;
     border-spacing: 0;
     position: relative;
+    border-top: 1px solid #dbdbdb;
 
     .col {
       display: inline-block;
@@ -43,7 +44,7 @@ body.users.reviews {
         text-overflow: ellipsis;
         vertical-align: middle;
         padding-left: 171px;
-        padding-right: 267px;
+        padding-right: 184px;
 
         a {
           color: #434343;
@@ -51,16 +52,23 @@ body.users.reviews {
       }
 
       &.author {
-        width: 121px;
+        width: 100px;
         position: absolute;
         top: 0;
-        right: 106px;
+        right: 45px;
         text-align: left;
         padding-left: 40px;
+        font-size: 14px;
       }
 
       &.score {
-        width: 106px;
+        width: 80px;
+        position: absolute;
+        top: -4px;
+        left: 82px;
+      }
+
+      &.icon {
         position: absolute;
         top: 0;
         right: 0;
@@ -68,10 +76,10 @@ body.users.reviews {
     }
 
     li.review {
-      line-height: 28px;
+      line-height: 82px;
       color: #434343;
       border-top: 0;
-      border-bottom: 1px solid #ededed;
+      border-bottom: 1px solid #dbdbdb;
       padding: 0 !important;
 
       .title {
@@ -79,9 +87,13 @@ body.users.reviews {
       }
     }
 
-    .star-rating-container span {
-      vertical-align: middle;
-      margin-top: 5px;
+    .star-rating-container {
+      margin-top: 3px;
+      height: 20px;
+
+      span {
+        vertical-align: middle;
+      }
     }
 
     .sprites-camera {
@@ -106,6 +118,7 @@ body.users.reviews {
 
     .expanded .review-content-expanded {
       display: block;
+      background: white;
     }
   }
 }
@@ -117,7 +130,8 @@ body.reviews.index, body.products.reviews, body.reviews.photos, body.reviews.pho
 
   #content {
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 18px;
+    background: #f2f2f2;
   }
 
   .select2-hidden-accessible {
@@ -555,8 +569,7 @@ li.review {
   }
 
   .widget-heading {
-    line-height: 20px;
-    height: 11px;
+    height: 12px;
     margin-bottom: 3px;
   }
 

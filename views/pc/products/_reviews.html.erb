@@ -4,5 +4,10 @@
   </ul>
   <div class="widget-footer">
     <%= paginate @reviews, params: {review_id: nil}, remote: true, window: kaminari_window(params[:page].to_i, @reviews.total_pages) %>
+    <div class="action-container">
+      <% if !@brand.reviews_index_url.blank? %>
+        <%= content_tag :div, 'PHOTO REVIEW', class: 'btn show-reviews-index', data: {reviews_index_url: @brand.reviews_index_url} %>
+      <% end %>
+    </div>
   </div>
 <% end %>
