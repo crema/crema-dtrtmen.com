@@ -1,0 +1,48 @@
+<%
+photo_reviews_count = product.photo_reviews_count
+return if photo_reviews_count == 0
+
+review_images = product.review_images([30, photo_reviews_count].min)
+reviews = product.visible_reviews
+%>
+<%= content_tag :div, class: "product_reviews_summary product_reviews_summary_#{ThumbnailSummaryStyle.key_string(widget.thumbnail_summary)} #{local_assigns[:klass]} #{widget.show_product_score? ? 'with_score' : 'without_score'}" do %>
+  <%= content_tag(:div, class: 'score-summary', data: {url: ajax_path(except: [:scores, :filter, :page], atarget: 'reviews')}) do %>
+    <div class="photo-thumbnails-header">
+      <div class="photo-thumbnails-header__title">고객포토리뷰</div>
+      <div class="photo-thumbnails-header__count"><span class="count"><%= photo_reviews_count %></span>개의 포토리뷰가 있습니다.</div>
+    </div>
+    <div id="review-photo-thumbnails">
+      <ul class="product-thumbnail-container">
+        <% brand = @brand %>
+        <% review_images.each_with_index do |review_image, index| %>
+          <%
+            image = review_image[:image]
+            link_url = nil
+            link_data = nil
+            target = nil
+            if local_assigns[:external_widget]
+              link_class = 'photo-review-new-window fade-from-grayscale'
+              link_url = photo_review_popup_review_url(review_image[:review].id, photo_index: review_image[:index], external_widget: 1)
+              target = '_blank'
+            elsif brand.review_enable_gallery_popup
+              link_class = 'photo-review-popup fade-from-grayscale'
+              link_data = {photo_review_popup_url: photo_review_popup_review_path(review_image[:review].id, photo_index: review_image[:index])}
+            else
+              link_class = 'link-image-zoom fade-from-grayscale'
+              link_data = {url: image.url, width: image.width, height: image.height}
+            end
+          %>
+          <li class="photo-review-thumbnail">
+            <%= content_tag :a, href: link_url, data: link_data, target: target, class: link_class do %>
+              <%= image_tag image.url(:thumbnail), class: 'smooth review-image', alt: image.model.title, width: 63, height: 63 %>
+              <%= image_tag image.url(:thumbnail), class: 'smooth grayscale', alt: image.model.title, width: 63, height: 63 %>
+            <% end %>
+          </li>
+        <% end %>
+        <% (1..(15 - photo_reviews_count)).each do |i| %>
+          <li class="photo-review-thumbnail photo-review-thumbnail-empty"></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

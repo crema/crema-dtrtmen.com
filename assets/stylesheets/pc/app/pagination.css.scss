@@ -3,9 +3,25 @@
 .paging_full_numbers .next:active, .paging_full_numbers .first:active, .paging_full_numbers .previous:active, .paging_full_numbers .last:active { font-weight: normal!important; }
 .paging_full_numbers a:active { outline: none }
 .paging_full_numbers a:hover { text-decoration: none; }
-.paging_full_numbers a.paginate_button, .paging_full_numbers a.paginate_active { border: 1px solid #e9e9e9; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 4px 7px; margin: 0 3px; cursor: pointer; *cursor: hand; color: #6e6e6e; font-size: 11px; }
-.paging_full_numbers a.paginate_button { background: #fefefe; }
-.paging_full_numbers a.paginate_button:hover { background: #f6f6f6; background: -moz-linear-gradient(top,  #f6f6f6 0%, #e8e8e8 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#e8e8e8)); background: -webkit-linear-gradient(top,  #f6f6f6 0%,#e8e8e8 100%); background: -o-linear-gradient(top,  #f6f6f6 0%,#e8e8e8 100%); background: -ms-linear-gradient(top,  #f6f6f6 0%,#e8e8e8 100%); background: linear-gradient(top,  #f6f6f6 0%,#e8e8e8 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#e8e8e8',GradientType=0 ); }
-.paging_full_numbers a.paginate_active, .paging_full_numbers a.paginate_button:active { background: #424242; color: #fff; border-color: #373737; font-weight: bold; }
-.paginate_button_disabled, .paginate_button_disabled:active  { background: #fafafa!important; color: #d7d4d4!important; box-shadow: none!important; font-weight: normal!important; }
-.paginate_button_disabled:active { border-color: #d3d3d3!important; }
+.paging_full_numbers a.paginate_button, .paging_full_numbers a.paginate_active { padding: 4px 4px; margin: 0; cursor: pointer; *cursor: hand; color: #868686; font-size: 18px; }
+.paging_full_numbers a.paginate_button { background: #f2f2f2; }
+.paging_full_numbers a.paginate_button:hover { color: #2d2a2a; }
+.paging_full_numbers a.paginate_active, .paging_full_numbers a.paginate_button:active { color: #2d2a2a; }
+.paginate_button_disabled, .paginate_button_disabled:active  { color: #868686!important; box-shadow: none!important; font-weight: normal!important; }
+
+.paging_full_numbers .first, .paging_full_numbers .last {
+  display: none;
+}
+
+.paging_full_numbers .previous, .paging_full_numbers .next {
+  border: 1px solid #5f5c5d;
+  padding: 4px 9px 6px 10px !important;
+}
+
+.paging_full_numbers .previous:hover, .paging_full_numbers .next:hover {
+  color: #2d2a2a !important;
+}
+
+.previous.paginate_button_disabled:hover {
+  color: #868686 !important;
+}

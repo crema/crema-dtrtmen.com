@@ -1,0 +1,22 @@
+<%
+image = review.image(i)
+link_url = nil
+link_data = nil
+target = nil
+if local_assigns[:external_widget]
+  link_class = 'photo-review-new-window'
+  link_url = photo_review_popup_review_url(review, photo_index: i, external_widget: 1)
+  target = '_blank'
+elsif @brand.review_enable_gallery_popup
+  link_class = 'photo-review-popup'
+  link_data = {photo_review_popup_url: photo_review_popup_review_path(review, photo_index: i)}
+else
+  link_class = 'link-image-zoom'
+  link_data = {url: image.url, width: image.width, height: image.height}
+end
+%>
+<%= content_tag :li, class: local_assigns[:li_class] do %>
+  <%= content_tag :a, href: link_url, data: link_data, target: target, class: link_class do %>
+    <%= image_tag image.url(:gallery), class: 'review-image smooth', alt: review.title %>
+  <% end %>
+<% end %>
