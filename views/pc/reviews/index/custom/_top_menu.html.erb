@@ -1,0 +1,18 @@
+<div class="menu">
+  <ul class="rpane">
+    <li class="search">
+      <%= form_tag url_for(params.except(:page)), class: 'menu-search', method: :get, remote: true do %>
+        <%= text_field_tag('query', @query, placeholder: '검색어 입력', autocomplete: "off") %>
+        <button type="submit" class="search">검색</button>
+      <% end %>
+      <% if @query %>
+        <%= link_to url_for(params.except(:query, :page)), class: 'remove-query', remote: true do %>
+          <span class="fa fa-times-circle"></span>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+  <ul class="lpane">
+    <li class="title">고객리뷰</li>
+  </ul>
+</div>
