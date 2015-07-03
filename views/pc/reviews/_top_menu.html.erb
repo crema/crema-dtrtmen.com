@@ -3,7 +3,7 @@
     <li class="sort-container">
       <%= select_tag :sort_type, options_for_select(@brand.review_sort_types(@group_by).collect{|sort_type| [ReviewSort.t(sort_type), url_for(params.merge(category_id: @category.try(:id), group: @group_by, order: sort_type).except(:page))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, order: @review_sort).except(:page))), class: 'select2' %>
     </li>
-    <% if @board_style != BoardStyle::THUMBNAIL %>
+    <% if widget.widget_style != WidgetStyle::GALLERY %>
       <%= content_tag :li, class: "group-container #{'selected' if @group_by == ReviewGroupBy::PRODUCT}" do %>
         <%= link_to url_for(group: @group_by == ReviewGroupBy::NONE ? ReviewGroupBy::PRODUCT : ReviewGroupBy::NONE ), class: 'toggle-group', remote: true do %>
           <span>상품별 리뷰 보기</span>
