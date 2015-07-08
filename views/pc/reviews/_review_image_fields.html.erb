@@ -1,0 +1,45 @@
+<%
+template = false if !local_assigns[:template]
+if template
+  image_position = '{{image_position}}'
+else
+  image_attribute = "image#{image_position}"
+end
+%>
+<li class="image-field">
+  <div class="wrap">
+    <%= image_tag('shared/transparent.png', class: 'size-support') %>
+    <div class="input-image-container on-list">
+      <span class="sprites-dtrt-icon-camera inline"></span>
+      <div>사진추가</div>
+    </div>
+    <% if template %>
+      <%= file_field_tag "review[image#{image_position}]", id: "review_image#{image_position}", class: 'input-file', accept: 'image/*' %>
+      <div class="preview-container hidden">
+        <img class="preview" alt="preview">
+        <div class="remove-preview hoverable" data-position="<%= image_position %>">
+          <div>삭제</div>
+        </div>
+      </div>
+    <% else %>
+      <% if !review.image(image_position).blank? %>
+        <%= f.hidden_field image_attribute, class: 'input-file' %>
+      <% else %>
+        <%= f.file_field image_attribute, class: 'input-file', accept: "image/*" %>
+      <% end %>
+
+      <%= content_tag :div, class: "preview-container #{'hidden' if review.image(image_position).blank?}" do %>
+        <% image = review.image(image_position) %>
+        <% image_url = image ? image.url(:thumbnail) : nil %>
+        <% if image_url %>
+          <%= image_tag(image_url, class: 'preview', width: 75, height: 75) %>
+        <% else %>
+          <img class="preview" alt="preview">
+        <% end %>
+        <%= content_tag :div, class: 'remove-preview hoverable', data: {position: image_position} do %>
+          <div class="remove">삭제</div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</li>
