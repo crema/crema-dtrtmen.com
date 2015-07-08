@@ -52,9 +52,9 @@
     <div class="input-button review-photos">
       <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: 4, images_count: 0}  do %>
         <% (0...@review.images_count).each do |i| %>
-          <%= render 'common/reviews/image_field', f: f, image_position: i + 1, review: @review %>
+          <%= render 'image_field', f: f, image_position: i + 1, review: @review %>
         <% end %>
-        <%= render 'common/reviews/image_field', f: f, image_position: @review.images_count + 1, review: @review if @review.images_count < 4 %>
+        <%= render 'image_field', f: f, image_position: @review.images_count + 1, review: @review if @review.images_count < 4 %>
       <% end %>
       <%= f.hidden_field :product_id %>
       <%= f.hidden_field :sub_order_id %>
@@ -66,7 +66,7 @@
     <% end %>
   </div>
   <script type="text/x-jquery-tmpl" class="new-image-field">
-    <%= render('common/reviews/image_field', f: f, template: true, review: @review) %>
+    <%= render('image_field', f: f, template: true, review: @review) %>
   </script>
 <% end %>
 <%= render 'common/shared/form_upload_image' %>
