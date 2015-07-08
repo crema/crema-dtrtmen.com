@@ -6,7 +6,7 @@ class Form
     select_args = {minimumResultsForSearch: -1}
     select_args = $.extend(select_args, args) if args
     $select.select2(select_args)
-    $select.prev().find(".select2-arrow").after("<span class='dtrt-select-down'></span>")
+    $select.prev().find(".select2-arrow").after("<span class='sprites-icon-drop-down'></span>")
 
 app.form = new Form
 

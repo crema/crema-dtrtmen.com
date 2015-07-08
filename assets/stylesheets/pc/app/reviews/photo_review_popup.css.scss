@@ -19,7 +19,7 @@
     border: none;
   }
 
-  #crema-review-water-mark {      
+  #crema-review-water-mark {
     position: absolute;
     bottom: 7px;
     right: 10px;
@@ -37,7 +37,7 @@
       color: #ddd;
       @include opacity(0.3);
       font-family: $font-default;
-      
+
       &.mall-name {
         @include opacity(0.5);
         margin-right: 5px;
@@ -47,7 +47,7 @@
         @include opacity(0.5);
         margin-left: 4px;
       }
-    } 
+    }
   }
 }
 
@@ -139,7 +139,7 @@
         height: 170px;
 
         .info {
-          padding: 20px 23px 16px 23px;
+          padding: 27px 23px 16px 23px;
           @include clearfix;
 
           .product-thumbnail {
@@ -148,25 +148,32 @@
           }
 
           .product-info {
-            float: right;
-            width: 160px;
+            @include clearfix;
+
+            .product-category {
+              font-size: 18px;
+              font-family: 'UniversLTStd-UltraCn';
+            }
 
             .product-name {
               font-family: $font-default;
               color: #323232;
-              font-size: 12px;
-              font-weight: bold;
+              font-size: 23px;
               padding-top: 4px;
             }
 
             .product-score {
               height: 14px;
-              padding: 6px 0 15px 0;
+              padding: 18px 0 15px 0;
+              display: inline-block;
             }
 
             .user-name {
-              font-size: 11px;
+              font-size: 14px;
               color: #adadad;
+              display: inline-block;
+              float: right;
+              padding-top: 16px;
             }
 
             .product-name, .user-name {
@@ -177,18 +184,18 @@
           }
 
           .review-like-result {
-            border: 1px solid #e7e7e7;
+            background: #f1f1f1;
             padding: 8px 9px;
             position: absolute;
             width: 222px;
-            height: 30px;
+            height: 47px;
             left: 23px;
-            top: 106px;
+            top: 134px;
 
             .review-like-info {
-              line-height: 15px;
+              line-height: 23px;
               color: #a4a4a4;
-              font-size: 11px;
+              font-size: 14px;
               font-family: $font-default;
 
               strong {
@@ -230,7 +237,7 @@
           }
 
           .feedback-container {
-            padding: 20px 0;
+            padding: 17px 0;
             width: 242px;
 
             .actions-container .like-action {
@@ -256,7 +263,8 @@
                 }
 
                 .btn {
-                  width: 38px;
+                  width: 85px;
+                  line-height: 35px;
                   margin-right: 0;
                 }
               }
@@ -268,29 +276,64 @@
 
             .comments-container {
               margin-right: 0;
-              padding: 10px;
-              width: 219px;
+              padding: 0;
+              border: 0;
+              padding-top: 10px;
 
               ul li {
                 border-top: 1px solid #eaeaea;
 
-                &:first-child {
-                  border-top: none;
+                .comment-created-at {
+                  display: none;
                 }
 
-               .inner {
+                .inner {
+                  padding: 20px 0;
+
                   .lpane {
                     float: none;
                     width: 120px;
                     margin-left: 0;
                     padding-bottom: 2px;
+
+                    .author-name {
+                      font-weight: normal;
+                      font-size: 14px;
+                    }
                   }
 
                   .rpane {
                     padding-left: 0;
                     color: #999;
-                    font-size: 11px;
+                    line-height: 26px;
+                    font-size: 14px;
                   }
+
+                  .action-comment-container {
+                    padding-top: 10px;
+                    text-align: right;
+                  }
+                }
+              }
+
+              .new-comments {
+                border: none;
+                background: #f2f2f2;
+                padding: 8px 65px 8px 12px;
+
+                input#comment_message {
+                  background: #f2f2f2;
+                  font-size: 14px;
+                }
+
+                button {
+                  background: #2c292a;
+                  top: 0;
+                  right: 0;
+                  color: white;
+                  line-height: 38px;
+                  width: 60px;
+                  font-size: 14px;
                 }
               }
             }

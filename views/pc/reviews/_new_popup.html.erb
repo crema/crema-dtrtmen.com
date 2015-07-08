@@ -21,10 +21,9 @@
         <div class="item-name"><%= @review.product.name %></div>
       <% end %>
       <% if 0 != @review.product.org_price %>
-        <div class="item-price">₩<%= number_with_delimiter(@review.product.org_price) %></div>
+        <div class="item-price"><%= number_with_delimiter(@review.product.org_price) %></div>
       <% end %>
     </div>
-    <div class="item-indicator"></div>
   </div>
   <div class="review-form-title">리뷰작성란</div>
   <div class="review-form-content limit-count-container">
@@ -39,13 +38,12 @@
           maxlength: Settings.max_review_length,
           rows: 8,
           cols: 5000, # HACK - IE8 textarea scroll bug
-          data: {up_counter: true, min_height: (browser.ie7? ? 135 : 158), minimum_message_length: @brand.give_mileage_minimum_message_length},
+          data: {up_counter: true, min_height: (browser.ie7? ? 135 : 158), minimum_message_length: @brand.min_review_length_to_get_mileage},
           default_count: @review.message ? @review.message.gsub(/\s/, '').length : 0,
           class: 'autogrow count-limit'
           ) %>
       </div>
     </div>
-    <div class="limit-counter">0</div>
   </div>
   <div class="field-box score-container">
     <%= f.select :score, ReviewScore.values.collect {|score| [ReviewScore.t(score), score]}, {selected: 5}, {dir: 'rtl', class: 'select-rating'} %>
