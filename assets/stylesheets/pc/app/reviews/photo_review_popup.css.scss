@@ -312,6 +312,10 @@
                   .action-comment-container {
                     padding-top: 10px;
                     text-align: right;
+                    
+                    .link-edit-comment, .link-delete-comment {
+                      font-size: 16px;
+                    }
                   }
                 }
               }
@@ -334,6 +338,7 @@
                   line-height: 38px;
                   width: 60px;
                   font-size: 14px;
+                  font-family: Nanum Barun Gothic;
                 }
               }
             }
