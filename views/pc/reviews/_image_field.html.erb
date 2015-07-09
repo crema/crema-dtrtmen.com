@@ -25,7 +25,7 @@ end
       <% if !review.image(image_position).blank? %>
         <%= f.hidden_field image_attribute, class: 'input-file' %>
       <% else %>
-        <%= f.file_field image_attribute, class: 'input-file', accept: "image/*", data: input_image_args.merge(upload_image_url: upload_preview_images_path, assets_url: asset_url("widgets/#{device}.js") %>
+        <%= f.file_field image_attribute, class: 'input-file', accept: "image/*", data: input_image_args.merge(upload_image_url: upload_preview_images_path, assets_url: asset_url("widgets/#{device}.js")) %>
       <% end %>
 
       <%= content_tag :div, class: "preview-container #{'hidden' if review.image(image_position).blank?}" do %>
