@@ -18,7 +18,7 @@ body.reviews.new {
 
     .wrap {
       position: relative;
-      background: #c8c8c8;
+      background: #6a6a6a;
       overflow: hidden;
       width: $preview_image_size;
       height: $preview_image_size;
@@ -32,11 +32,15 @@ body.reviews.new {
 
     .input-image-container {
       position: absolute;
-      top: 50%;
+      top: 86%;
       margin-top: -37px;
       right: 0;
       left: 0;
       text-align: center;
+
+      .add-image-caption {
+        margin-top: 4px;
+      }
     }
 
     .preview-container {

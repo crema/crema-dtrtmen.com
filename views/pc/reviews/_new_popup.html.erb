@@ -21,10 +21,9 @@
         <div class="item-name"><%= @review.product.name %></div>
       <% end %>
       <% if 0 != @review.product.org_price %>
-        <div class="item-price">₩<%= number_with_delimiter(@review.product.org_price) %></div>
+        <div class="item-price"><%= number_with_delimiter(@review.product.org_price) %></div>
       <% end %>
     </div>
-    <div class="item-indicator"></div>
   </div>
   <div class="review-form-title">리뷰작성란</div>
   <div class="review-form-content limit-count-container">
@@ -45,7 +44,6 @@
           ) %>
       </div>
     </div>
-    <div class="limit-counter">0</div>
   </div>
   <div class="field-box score-container">
     <%= f.select :score, ReviewScore.values.collect {|score| [ReviewScore.t(score), score]}, {selected: 5}, {dir: 'rtl', class: 'select-rating'} %>
@@ -54,9 +52,9 @@
     <div class="input-button review-photos">
       <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: 4, images_count: 0}  do %>
         <% (0...@review.images_count).each do |i| %>
-          <%= render 'common/reviews/image_field', f: f, image_position: i + 1, review: @review %>
+          <%= render 'image_field', f: f, image_position: i + 1, review: @review %>
         <% end %>
-        <%= render 'common/reviews/image_field', f: f, image_position: @review.images_count + 1, review: @review if @review.images_count < 4 %>
+        <%= render 'image_field', f: f, image_position: @review.images_count + 1, review: @review if @review.images_count < 4 %>
       <% end %>
       <%= f.hidden_field :product_id %>
       <%= f.hidden_field :sub_order_id %>
@@ -68,7 +66,7 @@
     <% end %>
   </div>
   <script type="text/x-jquery-tmpl" class="new-image-field">
-    <%= render('common/reviews/image_field', f: f, template: true, review: @review) %>
+    <%= render('image_field', f: f, template: true, review: @review) %>
   </script>
 <% end %>
 <%= render 'common/shared/form_upload_image' %>
