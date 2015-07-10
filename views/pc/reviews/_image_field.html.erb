@@ -12,7 +12,7 @@ end
     <%= image_tag('shared/transparent.png', class: 'size-support') %>
     <div class="input-image-container on-list">
       <span class="sprites-dtrt-icon-camera inline"></span>
-      <div class="add-image-caption">사진추가</div>
+      <div>사진추가</div>
     </div>
     <% if template %>
       <%= file_field_tag "review[image#{image_position}]", id: "review_image#{image_position}", class: 'input-file', accept: 'image/*', data: {upload_image_url: upload_preview_images_path} %>
