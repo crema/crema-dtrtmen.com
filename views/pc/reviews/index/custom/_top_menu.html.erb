@@ -1,5 +1,8 @@
 <div class="menu">
   <ul class="rpane">
+    <li class="sort-container">
+      <%= select_tag :sort_type, options_for_select(@brand.review_sort_types(@group_by).collect{|sort_type| [ReviewSort.t(sort_type), url_for(params.merge(category_id: @category.try(:id), group: @group_by, order: sort_type).except(:page))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, order: @review_sort).except(:page))), class: 'select2' %>
+    </li>
     <li class="search">
       <%= form_tag url_for(params.except(:page)), class: 'menu-search', method: :get, remote: true do %>
         <%= text_field_tag('query', @query, placeholder: '검색어 입력', autocomplete: "off") %>
@@ -11,8 +14,15 @@
         <% end %>
       <% end %>
     </li>
+    <% option_types = Review::OptionType.all %>
+    <%= render option_types, review_option_types_count: option_types.count %>
+    <li class="new-review">
+
+    </li>
   </ul>
   <ul class="lpane">
-    <li class="title">고객리뷰</li>
+    <li class="categories-container">
+      <%= select_tag :category, options_for_select(@categories.collect{|category| [category.name, url_for(params.merge(category_id: category.id, group: @group_by, order: @review_sort))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, order: @review_sort))), prompt: '카테고리별 보기', class: 'select2' %>
+    </li>
   </ul>
 </div>

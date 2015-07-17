@@ -1,0 +1,9 @@
+<%= content_tag_for :li, option_type do %>
+  <%= content_tag :a, class: 'link-review-option-type' do %>
+    <span class="type-name"><%= option_type.name %></span>
+    <span class="sprites-dtrt-select-down"></span>
+  <% end %>
+  <%= content_tag :div, class: "dropdown-menu #{'nonlast-option' if review_option_types_count != option_type_counter + 1} dialog-iframe-height" do %>
+    <%= render "reviews/option_types/search_#{ReviewOptionFieldType.key_string(option_type.field_type)}", option_type: option_type %>
+  <% end %>
+<% end %>

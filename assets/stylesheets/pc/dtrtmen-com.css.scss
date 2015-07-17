@@ -120,7 +120,8 @@ body.products.reviews, #review-edit-form, body.reviews.index {
       padding-top: 100px;
 
       img.review-image {
-        width: 100%;
+        width: 350px;
+        height: 350px;
       }
     }
 
@@ -237,15 +238,14 @@ body.reviews.index {
 
   .menu {
     margin-top: 0;
-    border: 0;
+    margin-bottom: 0;
+    border: 5px solid #2c292a;
     box-shadow: none;
+    padding: 28px 30px;
 
     .lpane {
       padding-right: 0;
-
-      .title {
-        font-size: 40px;
-      }
+      width: 188px;
     }
 
     .rpane {
@@ -277,10 +277,6 @@ body.reviews.index {
         }
       }
     }
-  }
-
-  ul.reviews {
-    border-top: 3px solid #2c292a;
   }
 }
 
