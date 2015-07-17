@@ -1,7 +1,7 @@
 @import "../lib/common";
 @import "compass/css3/transition";
 
-$menu_height: 51px;
+$menu_height: 40px;
 $menu_rpane_width: 352px;
 $menu_rpane_width_focused: $menu_rpane_width + 78;
 
@@ -34,7 +34,6 @@ $menu_rpane_width_focused: $menu_rpane_width + 78;
     &.rpane {
       float: right;
       li {
-        border-left: 1px solid #e1e1e1;
         float: left;
       }
     }
@@ -53,10 +52,9 @@ $menu_rpane_width_focused: $menu_rpane_width + 78;
       position: relative;
       float: none;
       display: block;
-      padding: 8px 15px;
+      padding: 0;
 
       span {
-        margin-right: 5px;
         position: absolute;
         top: 0;
       }
@@ -64,11 +62,11 @@ $menu_rpane_width_focused: $menu_rpane_width + 78;
 
     &.sort-container {
       padding: 0;
-      width: 121px;
+      margin-right: 10px;
       font-family: $font-default;
 
       .select2-chosen {
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 
@@ -137,39 +135,86 @@ $menu_rpane_width_focused: $menu_rpane_width + 78;
         color: black;
       }
     }
+
+    &.review_option_type {
+      float: left;
+      font-size: 14px;
+      height: 40px;
+      margin-left: 40px;
+      position: relative;
+      width: 83px;
+      border-left: 0;
+      background: white;
+      padding: 0 23px;
+
+      .sprites-dtrt-select-down {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        min-width: 80px;
+        top: 41px;
+        right: 0px;
+        border: 1px solid rgb(225, 225, 225);
+        text-align: center;
+        z-index: 1;
+        box-shadow: rgba(0, 0, 0, 0.027451) 0px 4px 4px;
+        display: none;
+        background: white;
+
+        .review_option_search_values {
+          padding: 10px 15px;
+
+          .review_option_search_value {
+            line-height: 20px;
+            text-align: left;
+            white-space: nowrap;
+            border-left: 0;
+          }
+        }
+      }
+    }
+
+    &.new-review {
+      border-left: 0;
+    }
   }
 
   .select2-container#s2id_sort_type {
     font-size: 14px;
     @include inline-block;
-    height: 51px;
-    width: 121px;
+    height: 26px;
+    width: 91px;
+    padding: 7px 19px;
+    background: white;
 
     .select2-choice {
-      padding: 13px 15px;
       position: relative;
       box-sizing: content-box;
 
-      .sprites-icon-drop-down {
-        top: 21px;
-        right: 15px;
+      .sprites-dtrt-select-down {
+        position: absolute;
+        top: 7px;
+        right: 0;
       }
     }
   }
 
   .select2-container#s2id_category {
-    border: 1px solid #dadada;
     font-size: 14px;
     display: block;
-    padding: 4px 10px;
+    padding: 7px 19px;
     height: 25px;
-    margin-left: 100px;
-  }
+    width: 150px;
+    background: white;
 
-  .rpane {
-    position: absolute;
-    top: 0;
-    right: 0;
+    .sprites-dtrt-select-down {
+      top: 7px;
+      right: 0;
+    }
   }
 
   .lpane {
