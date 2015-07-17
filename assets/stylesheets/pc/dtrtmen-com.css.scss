@@ -119,6 +119,11 @@ body.products.reviews, #review-edit-form, body.reviews.index {
     .images {
       padding-top: 100px;
 
+      .grid-4 {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
       img.review-image {
         width: 350px;
         height: 350px;
