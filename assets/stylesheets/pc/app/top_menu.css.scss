@@ -180,6 +180,13 @@ $menu_rpane_width_focused: $menu_rpane_width + 78;
 
     &.new-review {
       border-left: 0;
+      line-height: 40px;
+      background: #2c292a;
+      color: white;
+      width: 50px;
+      font-size: 14px;
+      margin-left: 11px;
+      text-align: center;
     }
   }
 
