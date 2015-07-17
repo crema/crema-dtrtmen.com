@@ -3,10 +3,6 @@
   <%= content_tag :div, class: "widget widget-reviews pagination-list #{'no-data' if @reviews.empty?}" do %>
     <div class="widget-body">
       <%= render 'reviews/index/custom/top_menu' %>
-      <% review_option_types = @brand.searchable_options %>
-      <% if !review_option_types.blank? %>
-        <%= render 'review_options_search', review_option_types: review_option_types %>
-      <% end %>
       <ul class="header">
         <li>
           <div class="col index">번호</div>
