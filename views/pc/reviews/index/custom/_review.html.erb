@@ -3,6 +3,12 @@
     <div class="review-content-summary">
       <% review_position = @first_review_position_in_page - review_counter if @first_review_position_in_page %>
       <div class="col index"><%= @first_review_position_in_page ? review_position : review.id %></div>
+      <div class="col product-image">
+        <span class="image">
+          <%= image_tag review.product_image_url, class: 'smooth', alt: review.product_name, width: 80, height: 80 %>
+        </span>
+      </div>
+      <div class="col product-name"><%= review.product_name %></div>
       <div class="col score">
         <div class="star-rating-container">
           <% (1..5).each do |i| %>
@@ -16,7 +22,7 @@
         <%= "[#{review.comments_count}]" if review.comments_count > 0 %>
       </div>
       <div class="col author"><%= review_user_display_name(review) %></div>
-      <div class="col icon"><%= content_tag :span, nil, class: "dtrt-select-down" %></div>
+      <div class="col icon"><%= content_tag :span, nil, class: "sprites-dtrt-arrow-down" %></div>
       <div class="review-content-expanded"></div>
     </div>
   <% end %>

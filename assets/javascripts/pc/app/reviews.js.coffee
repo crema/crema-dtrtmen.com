@@ -4,9 +4,9 @@ class Reviews
     $expanded = $review_content.find(".review-content-expanded").css(opacity: 1)
     $review_content.height($expanded.height())
     $icon_element = $review_content.find(".icon span")
-    if $icon_element.hasClass("dtrt-select-up")
-      $icon_element.removeClass("dtrt-select-up")
-      $icon_element.addClass("dtrt-select-down")
+    if $icon_element.hasClass("sprites-dtrt-arrow-up")
+      $icon_element.removeClass("sprites-dtrt-arrow-up")
+      $icon_element.addClass("sprites-dtrt-arrow-down")
     setTimeout (->
       $review_content.addClass("expanding")
       lib.animation.fade_out $expanded, duration: "short"
@@ -74,9 +74,9 @@ class Reviews
             $review_content.trigger("review_content:loaded")
 
         $icon_element = $review.find(".icon span")
-        if $icon_element.hasClass("dtrt-select-down")
-          $icon_element.removeClass("dtrt-select-down")
-          $icon_element.addClass("dtrt-select-up")
+        if $icon_element.hasClass("sprites-dtrt-arrow-down")
+          $icon_element.removeClass("sprites-dtrt-arrow-down")
+          $icon_element.addClass("sprites-dtrt-arrow-up")
 
         if !$review.data("requested")
           $review.data("requested", true)
