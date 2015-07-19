@@ -215,6 +215,21 @@ body.reviews.index {
       }
     }
   }
+
+  ul.reviews-gallery {
+    border-top: 0;
+    margin: 40px -7px 0 -7px;
+    width: 984px;
+
+    li.photo-review-popup {
+      line-height: 14px;
+      width: 314px;
+      margin: 0 7px 14px 7px;
+      border: 0;
+      background: white;
+      box-shadow: none;
+    }
+  }
 }
 
 
