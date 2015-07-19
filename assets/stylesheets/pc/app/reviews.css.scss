@@ -163,6 +163,30 @@ body.reviews.index {
     li.review {
       line-height: 120px;
     }
+
+    .actions-container {
+      text-align: center;
+
+      .likable {
+        height: 70px;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        position: relative;
+
+        .sprites-dtrt-button-like {
+          position: absolute;
+          top: 11px;
+          left: 31px;
+        }
+
+        .btn {
+          border: 0;
+          padding-top: 42px;
+          padding-bottom: 5px;
+          margin-right: 0;
+        }
+      }
+    }
   }
 
   ul.header {
@@ -196,7 +220,7 @@ body.reviews.index {
 
 body.reviews.index, body.products.reviews, body.reviews.photos, body.reviews.photo_review_popup, body.my.reviews, body.my.photo_reviews, body.users.reviews {
   &.app {
-    margin: 20px;
+    // margin: 20px;
   }
 
   #content {

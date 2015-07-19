@@ -4,15 +4,19 @@
       <% review_position = @first_review_position_in_page - review_counter if @first_review_position_in_page %>
       <div class="col index"><%= @first_review_position_in_page ? review_position : review.id %></div>
       <div class="col product-image">
-        <span class="image">
+        <a class="image link-product">
           <%= image_tag review.product_image_url, class: 'smooth', alt: review.product_name, width: 80, height: 80 %>
-        </span>
+        </a>
       </div>
-      <div class="col product-name"><%= review.product_name %></div>
+      <div class="col product-name">
+        <a class="link-product">
+          <%= review.product_name %>
+        </a>
+      </div>
       <div class="col score">
         <div class="star-rating-container">
           <% (1..5).each do |i| %>
-            <%= content_tag :span, nil, class: "#{review.score && i > review.score ? 'star-empty' : 'star'}" %>
+            <%= content_tag :span, nil, class: "star #{'star-empty' if review.score && i > review.score}" %>
           <% end %>
         </div>
       </div>
