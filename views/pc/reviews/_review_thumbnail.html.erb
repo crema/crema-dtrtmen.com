@@ -1,0 +1,60 @@
+<%= content_tag_for :li, review, data: {product_url: review.product_url || (review.product ? review.product.url : nil), photo_review_popup_url: photo_review_popup_review_path(review)}, class: 'photo-review-popup' do %>
+  <% product = review.product %>
+  <% review_position = @first_review_position_in_page - review_counter if @first_review_position_in_page %>
+  <%= content_tag :div, review_position, class: 'review-position' if @first_review_position_in_page %>
+  <div class="thumbnail-container">
+    <ul>
+      <li class="review-image-thumbnail">
+        <%= image_tag review.image(1).url(:portrait), class: 'review-image smooth', alt: review.title %>
+      </li>
+    </ul>
+    <%= render 'images_indicator', images_count: review.images_count %>
+  </div>
+  <div class="review-author-info">
+    <div class="review-title">
+      <%= content_tag :span, review_position, class: 'review-position-placeholder' if @first_review_position_in_page %>
+      <%= review.message.first_line(Settings.max_review_chars_per_line) %>
+    </div>
+    <div class="date-name-container <%= 'show-created-at' if @brand.review_show_created_at %>">
+      <div class="author-name">
+        <% if review.user_display_name.blank? %>
+          &nbsp;
+        <% else %>
+          <%= review.user_display_name %>
+        <% end %>
+      </div>
+      <div class="created-at">
+        <%= review.created_at.strftime("%Y.%m.%d") %>
+      </div>
+    </div>
+  </div>
+  <% if product %>
+    <div class="review-product link-product">
+      <div class="review-product-thumbnail">
+        <%= image_tag review.product_image_url, alt: review.product_name, width: 90, height: 90 %>
+      </div>
+      <div class="review-product-info">
+        <div class="product-info-title">
+          <a class="link-product">
+            <%= review.product_name %>
+          </a>
+        </div>
+        <% average_score = product.reviews.average(:score).to_f.round(1) %>
+        <% display_score = average_score * @brand.review_score_multiplier %>
+        <div class="product-info-feedbacks">
+          <span class="reviews-count">리뷰<strong><%= product.reviews_count %></span></strong>
+          <span class="display-score">
+            추천수
+            <span class="score-container">
+              <% (1..5).each do |i| %>
+                <%= content_tag :span, nil, class: "star #{'star-empty' if review.score && i > review.score}" %>
+              <% end %>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="review-product"></div>
+  <% end %>
+<% end %>
