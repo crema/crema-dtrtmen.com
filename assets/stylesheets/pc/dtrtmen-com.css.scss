@@ -122,11 +122,12 @@ body.products.reviews, #review-edit-form, body.reviews.index {
       .grid-4 {
         display: inline-block;
         margin-right: 10px;
+        height: 350px;
+        overflow: hidden;
       }
 
       img.review-image {
         width: 350px;
-        height: 350px;
       }
     }
 
@@ -257,9 +258,11 @@ body.reviews.index {
       .search {
         padding: 0;
         border-left: 0;
+        position: relative;
 
         input {
           line-height: 40px;
+          height: 40px;
           display: inline-block;
           padding: 0 15px;
           width: 182px;
@@ -277,7 +280,7 @@ body.reviews.index {
 
         .fa-times-circle {
           position: absolute;
-          top: 20px;
+          top: 16px;
           right: 100px;
         }
       }
