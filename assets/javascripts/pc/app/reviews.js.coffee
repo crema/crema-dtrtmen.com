@@ -37,7 +37,9 @@ class Reviews
     args.elements.find(".link-expand").click ->
       $review = $(this).closest(".review")
       $review_content = $review.find(".review-content")
-      if !$review_content.hasClass("expanded")
+      if $review_content.hasClass("expanded")
+        collapse $review_content
+      else
         $review_content.on "review_content:loaded", (e) ->
           if $review_content.data("filled") && $review_content.data("ready")
             $collapsed = $review_content.find(".review-content-collapsed").css(opacity: 1)

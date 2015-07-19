@@ -25,11 +25,22 @@
 </div>
 <div class="panel-footer no-border">
   <div class="actions-container">
-    <div class="inline">
-      <a class="mall-link-color comments-link link-collapse">리뷰 접기</a>
-    </div>
-    <div class="inline divider">|</div>
-    <%= render 'reviews/action_likes', review: review %>
+    <% if false %>
+      <div class="inline">
+        <a class="mall-link-color comments-link link-collapse">리뷰 접기</a>
+      </div>
+      <div class="inline divider">|</div>
+    <% end %>
+    <%
+    likes = likes?(review)
+    like = get_like(review)
+    %>
+    <%= content_tag :div, class: "inline like-action #{(like.score > 0 ? 'liked' : 'unliked') if likes}", data: {url: like_review_path(review)} do %>
+      <div class="inline likable">
+        <span class="sprites-dtrt-button-like"></span>
+        <a class="link-like btn">추천하기</a>
+      </div>
+    <% end %>
   </div>
   <%= render 'reviews/comments', review: review, external_widget: @external_widget %>
 </div>
