@@ -213,9 +213,17 @@ body.reviews.index {
           .sprites-dtrt-button-like {
             display: none;
           }
+
+          .sprites-dtrt-button-liked {
+            display: block;
+          }
         }
 
         &.unliked {
+          .sprites-dtrt-button-like {
+            display: block;
+          }
+
           .sprites-dtrt-button-liked {
             display: none;
           }
