@@ -16,9 +16,6 @@
     </li>
     <% option_types = Review::OptionType.all %>
     <%= render option_types, review_option_types_count: option_types.count %>
-    <li class="new-review">
-      <%= content_tag :a, '리뷰쓰기', href: nil %>
-    </li>
   </ul>
   <ul class="lpane">
     <li class="categories-container">
