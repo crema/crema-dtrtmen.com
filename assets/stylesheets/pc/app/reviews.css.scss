@@ -167,23 +167,58 @@ body.reviews.index {
     .actions-container {
       text-align: center;
 
-      .likable {
-        height: 70px;
-        border-top: 3px solid black;
-        border-bottom: 3px solid black;
-        position: relative;
+      .like-action {
+        .likable {
+          height: 70px;
+          border-top: 3px solid black;
+          border-bottom: 3px solid black;
+          position: relative;
 
-        .sprites-dtrt-button-like {
-          position: absolute;
-          top: 11px;
-          left: 31px;
+          .sprites-dtrt-button-like, .sprites-dtrt-button-liked {
+            position: absolute;
+            top: 11px;
+            left: 31px;
+          }
+
+          .sprites-dtrt-button-liked {
+            display: none;
+          }
+
+          .btn {
+            width: 91px;
+            border: 0;
+            padding-top: 42px;
+            padding-bottom: 5px;
+            margin-right: 0;
+          }
+
+          &:hover {
+            background: #5e5e5e;
+
+            a {
+              color: white;
+            }
+
+            .sprites-dtrt-button-like {
+              display: none;
+            }
+
+            .sprites-dtrt-button-liked {
+              display: block;
+            }
+          }
         }
 
-        .btn {
-          border: 0;
-          padding-top: 42px;
-          padding-bottom: 5px;
-          margin-right: 0;
+        &.liked {
+          .sprites-dtrt-button-like {
+            display: none;
+          }
+        }
+
+        &.unliked {
+          .sprites-dtrt-button-liked {
+            display: none;
+          }
         }
       }
     }
