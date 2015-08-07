@@ -14,19 +14,18 @@ reviews = product.visible_reviews
     <div id="review-photo-thumbnails">
       <ul class="product-thumbnail-container">
         <% brand = @brand %>
-        <% review_images.each_with_index do |review_image, index| %>
+        <% review_images.each_with_index do |image, index| %>
           <%
-            image = review_image[:image]
             link_url = nil
             link_data = nil
             target = nil
             if local_assigns[:external_widget]
               link_class = 'photo-review-new-window fade-from-grayscale'
-              link_url = photo_review_popup_review_url(review_image[:review].id, photo_index: review_image[:index], external_widget: 1)
+              link_url = photo_review_popup_review_url(image.model.id, photo_index: image.mounted_as[5].to_i, external_widget: 1)
               target = '_blank'
             elsif brand.review_enable_gallery_popup
               link_class = 'photo-review-popup fade-from-grayscale'
-              link_data = {photo_review_popup_url: photo_review_popup_review_path(review_image[:review].id, photo_index: review_image[:index])}
+              link_data = {photo_review_popup_url: photo_review_popup_review_path(image.model.id, photo_index: image.mounted_as[5].to_i)}
             else
               link_class = 'link-image-zoom fade-from-grayscale'
               link_data = {url: image.url, width: image.width, height: image.height}
