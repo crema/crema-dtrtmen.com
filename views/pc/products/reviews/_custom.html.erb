@@ -16,6 +16,7 @@
       <% end %>
     <% end %>
     <%= render 'products/reviews/custom/reviews', external_widget: @external_widget %>
+    <%= render 'products/reviews/custom/summary', klass: ('without_write_form' unless display_write_form) %>
     <div class="notice">
       <div class="notice__header">
         필수참고
@@ -32,6 +33,5 @@
         <p>삭제될 수 있으니 양해바랍니다.</p>
       </div>
     </div>
-    <%= render 'products/reviews/custom/summary', klass: ('without_write_form' unless display_write_form) %>
   <% end %>
 <% end %>
