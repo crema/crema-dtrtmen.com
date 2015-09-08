@@ -9,7 +9,7 @@ reviews = product.visible_reviews
   <%= content_tag(:div, class: 'score-summary', data: {url: ajax_path(except: [:scores, :filter, :page], atarget: 'reviews')}) do %>
     <div class="photo-thumbnails-header">
       <div class="photo-thumbnails-header__title">고객포토리뷰</div>
-      <div class="photo-thumbnails-header__count"><span class="count"><%= photo_reviews_count %></span>개의 포토리뷰가 있습니다.</div>
+      <div class="photo-thumbnails-header__count">* <span class="count"><%= photo_reviews_count %></span>개의 포토리뷰가 있습니다.</div>
     </div>
     <div id="review-photo-thumbnails">
       <ul class="product-thumbnail-container">
