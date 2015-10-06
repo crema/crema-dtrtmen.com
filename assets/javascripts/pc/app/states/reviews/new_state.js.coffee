@@ -26,12 +26,7 @@ class ReviewsNewState
           offset_y: lib.data.get("review-popup-offset-y")
         }
 
-    args.elements.find("#lista").als
-      visible_items: 2
-      scrolling_items: 2
-      orientation: "vertical"
-      circular: "no"
-      autoscroll: "no"
+    @bind_scroll(args.elements.find("#lista"))
 
     $form = args.elements.find("form#new_review")
     $review_option_fields = $form.find(".review-option-fields")
@@ -62,5 +57,13 @@ class ReviewsNewState
 
   _is_fullscreen_popup: ->
     lib.data.get("review-popup-fullscreen")
+
+  bind_scroll: ($list) ->
+    $list.als
+      visible_items: 2
+      scrolling_items: 2
+      orientation: "vertical"
+      circular: "no"
+      autoscroll: "no"
 
 app.reviews_new_state = new ReviewsNewState
