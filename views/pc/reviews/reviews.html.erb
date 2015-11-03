@@ -31,11 +31,11 @@
         <p>단순 상품문의 및 효능이나 효과에 대해 검증되지 않은 글, 미풍양속을 해치는 글, 상품판매, 샘플신청 등은 등록 전 심사하여</p>
         <p>삭제될 수 있으니 양해바랍니다.</p>
       </div>
-    </div>    
-    <% if @brand.review_show_score_summary || (@brand.review_show_thumbnail_summary && @product.photo_reviews_count > 0) %>
+    </div>
+    <% if widget.show_product_score? || (@brand.review_show_thumbnail_summary && @product.photo_reviews_count > 0) %>
       <%
         only_thumbnail = nil
-        if !@brand.review_show_score_summary
+        if !widget.show_product_score?
           only_thumbnail = 'only-thumbnail' if !display_write_form
         end
       %>
@@ -44,6 +44,6 @@
           <%= render 'reviews_summary', product: @product, external_widget: @external_widget %>
         <% end %>
       </div>
-    <% end %>    
+    <% end %>
   <% end %>
 <% end %>
