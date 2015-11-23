@@ -32,7 +32,7 @@
                         sub_order = pending_review[:sub_order]
                         product = pending_review[:product]
                         %>
-                        <%= content_tag :li, class: "als-item pending-review pending-review-product_#{product.id}" do %>
+                        <%= content_tag :li, class: "als-item pending-review #{pending_review_id(sub_order: sub_order, product: product)}" do %>
                           <%= link_to selection_reviews_path(sub_order_id: sub_order.try(:id), product_id: product.id, review_source: @review.review_source), remote: true, class: 'link-select-review' do %>
                             <%= image_tag product.image_url(:middle), class: 'slide_image smooth' %>
                             <div class="review-listitem-information hoverable <%= 'first-photo-review' if @brand.review_show_first_photo && product.first_photo_review? %> <%= 'review-listitem-information-selected' if i == 0 %>">
