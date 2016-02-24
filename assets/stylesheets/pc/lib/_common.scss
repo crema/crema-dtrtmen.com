@@ -41,3 +41,11 @@ $z-index-watermark: 20000;
   *display: inline;
   *zoom: 1;
 }
+
+@mixin aloading {
+  @include transition(opacity 0.3s ease-out);
+
+  &.aloading {
+    @include opacity(0.3);
+  }
+}
