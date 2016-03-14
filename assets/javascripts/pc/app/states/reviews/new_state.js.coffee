@@ -4,8 +4,9 @@ class ReviewsNewState
       app.login.required()
       return
 
-    if $("#no-pending-reviews").length > 0
-      if $("#no-pending-reviews").data("alert")
+    $no_pending_reviews = $("#no-pending-reviews")
+    if $no_pending_reviews.length > 0
+      if $no_pending_reviews.data("alert")
         alert("작성할 리뷰가 없습니다.")
       app.window.close_popup_once("system", "no_pending_reviews")
       return
