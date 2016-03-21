@@ -33,7 +33,7 @@ class ReviewsNewState
     $review_option_fields = $form.find(".review-option-fields")
     if $review_option_fields.length > 0
       $form.find("textarea").one "focus", ->
-        $review_option_fields.css(marginTop: -($review_option_fields.height() + 15), opacity: 0).show()
+        $review_option_fields.css(marginTop: -($review_option_fields.height() + 15), opacity: 0, display: "block")
         if Modernizr.cssanimations
           setTimeout (->
             $review_option_fields.addClass("anim")
