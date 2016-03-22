@@ -33,6 +33,8 @@ class ReviewsNewState
     $review_option_fields = $form.find(".review-option-fields")
     if $review_option_fields.length > 0
       $form.find("textarea").one "focus", ->
+        # IE7에서 .show() 대신 .css(display: "block")을 해줘야됨. 이유는 모름.
+        # https://app.asana.com/0/80420144146943/91330956610548
         $review_option_fields.css(marginTop: -($review_option_fields.height() + 15), opacity: 0, display: "block")
         if Modernizr.cssanimations
           setTimeout (->
