@@ -21,11 +21,7 @@
         }) %>
       <div class="review-input-photos">
         <div class="input-button review-photos">
-          <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: 4, images_count: review.images_count}  do %>
-            <% (1..[review.images_count+1, Settings.review_max_images_num].min).each do |i| %>
-              <%= render 'common/reviews/image_field', f: f, image_position: i, review: review %>
-            <% end %>
-          <% end %>
+          <%= render 'common/reviews/image_fields', review: review, f: f %>
         </div>
       </div>
     </div>
