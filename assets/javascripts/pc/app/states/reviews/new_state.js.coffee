@@ -4,8 +4,9 @@ class ReviewsNewState
       app.login.required()
       return
 
-    if $("#no-pending-reviews").length > 0
-      if $("#no-pending-reviews").data("alert")
+    $no_pending_reviews = $("#no-pending-reviews")
+    if $no_pending_reviews.length > 0
+      if $no_pending_reviews.data("alert")
         alert("작성할 리뷰가 없습니다.")
       app.window.close_popup_once("system", "no_pending_reviews")
       return
@@ -32,7 +33,9 @@ class ReviewsNewState
     $review_option_fields = $form.find(".review-option-fields")
     if $review_option_fields.length > 0
       $form.find("textarea").one "focus", ->
-        $review_option_fields.css(marginTop: -($review_option_fields.height() + 15), opacity: 0).show()
+        # IE7에서 .show() 대신 .css(display: "block")을 해줘야됨. 이유는 모름.
+        # https://app.asana.com/0/80420144146943/91330956610548
+        $review_option_fields.css(marginTop: -($review_option_fields.height() + 15), opacity: 0, display: "block")
         if Modernizr.cssanimations
           setTimeout (->
             $review_option_fields.addClass("anim")

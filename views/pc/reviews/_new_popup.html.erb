@@ -50,7 +50,7 @@
   </div>
   <div class="review-input-photos">
     <div class="input-button review-photos">
-      <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: 4, images_count: 0}  do %>
+      <%= content_tag :ul, class: 'image-fields-container', data: {max_images_count: Review::MAX_IMAGES_COUNT, images_count: 0}  do %>
         <% (0...@review.images_count).each do |i| %>
           <%= render 'common/reviews/image_field', f: f, image_position: i + 1, review: @review %>
         <% end %>
