@@ -46,8 +46,8 @@
                                     <span class="first-photo-review-comment-reward">
                                       <% if @brand.review_popup_first_reward_message && @brand.review_popup_first_reward_message != '' && @brand.review_popup_first_reward_message != nil %>
                                         <%= @brand.review_popup_first_reward_message %>
-                                      <% elsif @brand.give_mileage_nth_photo_review(0) > 0 %>
-                                        적립금 <%= @brand.give_mileage_nth_photo_review(0) %>원 더!
+                                      <% elsif @brand.mileage_for_nth_photo_review(0) > 0 %>
+                                        적립금 <%= @brand.mileage_for_nth_photo_review(0) %>원 더!
                                       <% else %>
                                         지금 리뷰를 작성 해 주세요!
                                       <% end %>
