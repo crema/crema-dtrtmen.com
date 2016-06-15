@@ -42,7 +42,7 @@
         <% average_score = product.reviews.average(:score).to_f.round(1) %>
         <% display_score = average_score * @brand.review_score_multiplier %>
         <div class="product-info-feedbacks">
-          <span class="reviews-count">리뷰<strong><%= product.reviews_count %></span></strong>
+          <span class="reviews-count">리뷰<strong><%= product.meta_reviews_count %></span></strong>
           <span class="display-score">
             추천수
             <span class="score-container">

@@ -32,7 +32,7 @@
         <p>삭제될 수 있으니 양해바랍니다.</p>
       </div>
     </div>
-    <% if widget.show_product_score? || (@brand.review_show_thumbnail_summary && @product.photo_reviews_count > 0) %>
+    <% if widget.show_product_score? || (@brand.review_show_thumbnail_summary && @product.meta_photo_reviews_count > 0) %>
       <%
         only_thumbnail = nil
         if !widget.show_product_score?
