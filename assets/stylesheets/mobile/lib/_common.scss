@@ -5,8 +5,9 @@ $mobile-topbar-height: 53px;
 $link-color: #77b677;
 $panel-border: #e4e4e4;
 
+$font-default: "나눔고딕", "NanumGothic", "맑은 고딕", "Malgun Gothic", "돋움", "Dotum", "굴림", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @mixin font-default {
-  font-family: "나눔고딕", "NanumGothic", "맑은 고딕", "Malgun Gothic", "돋움", "Dotum", "굴림", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font-default;
 
   body[lang="ja-JP"] & {
     font-family: "meiryo", "Helvetica Neue", Helvetica, Arial, sans-serif;
