@@ -36,7 +36,7 @@
     span {
       color: #ddd;
       @include opacity(0.3);
-      font-family: $font-default;
+      @include font-default;
 
       &.mall-name {
         @include opacity(0.5);
@@ -104,7 +104,7 @@
       }
 
       #full-image-message {
-        font-family: $font-default;
+        @include font-default;
         position: absolute;
         text-align: center;
         left: 50%;
@@ -156,7 +156,7 @@
             }
 
             .product-name {
-              font-family: $font-default;
+              @include font-default;
               color: #323232;
               font-size: 23px;
               padding-top: 4px;
@@ -196,7 +196,7 @@
               line-height: 23px;
               color: #a4a4a4;
               font-size: 14px;
-              font-family: $font-default;
+              @include font-default;
 
               strong {
                 color: #1f1f1f;

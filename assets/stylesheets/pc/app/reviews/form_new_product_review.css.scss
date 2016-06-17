@@ -18,7 +18,7 @@
   .input-area-container {
     position: relative;
     height: 40px;
-    font-family: $font-default;
+    @include font-default;
   }
 
   select.select-rating {
@@ -200,7 +200,7 @@
       height: 40px;
       line-height: 40px;
       vertical-align: center;
-      font-family: $font-default;
+      @include font-default;
 
       .hint {
         font-size: 12px;
@@ -231,7 +231,7 @@
     z-index: 1000;
     width: 100%;
     top: -61px;
-    font-family: $font-default;
+    @include font-default;
     @include transition(top 0.3s ease);
 
     .content-container {

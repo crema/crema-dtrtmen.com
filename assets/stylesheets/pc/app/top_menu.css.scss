@@ -63,7 +63,7 @@ $menu_rpane_width_focused: $menu_rpane_width + 78;
     &.sort-container {
       padding: 0;
       margin-right: 10px;
-      font-family: $font-default;
+      @include font-default;
 
       .select2-chosen {
         font-size: 14px;

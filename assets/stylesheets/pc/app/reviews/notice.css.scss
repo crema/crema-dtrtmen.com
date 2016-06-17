@@ -10,7 +10,7 @@
     li {
       font-size: 11px;
       color: #606060;
-      font-family: $font-default;
+      @include font-default;
 
       &:first-child {
         float: left;
@@ -57,7 +57,7 @@
         float: left;
         font-size: 13px;
         line-height: 13px;
-        font-family: $font-default;
+        @include font-default;
         color: #2d2d2d;
 
         strong {
@@ -70,7 +70,7 @@
         float: right;
         font-size: 13px;
         line-height: 13px;
-        font-family: $font-default;
+        @include font-default;
         color: #b7b7b7;
       }
     }

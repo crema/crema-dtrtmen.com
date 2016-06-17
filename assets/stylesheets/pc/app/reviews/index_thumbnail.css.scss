@@ -37,7 +37,7 @@
 
       .review {
         float: left;
-        font-family: $font-default;
+        @include font-default;
         width: 215px;
         border: 1px solid #e5e5e5;
         padding: 0;

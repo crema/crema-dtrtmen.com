@@ -97,7 +97,7 @@
       }
 
       #full-image-message {
-        font-family: $font-default;
+        @include font-default;
         position: absolute;
         text-align: center;
         left: 50%;
