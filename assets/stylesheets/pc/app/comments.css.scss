@@ -48,7 +48,7 @@
       .lpane {
         float: left;
         font-weight: bold;
-        font-family: $font-default;
+        @include font-default;
         padding: 0;
         width: 62px;
         margin-left: 5px;

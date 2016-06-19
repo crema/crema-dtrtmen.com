@@ -22,7 +22,7 @@
       </div>
       <div class="col title">
         <%= content_tag :span, nil, class: "#{'dtrt-camera-icon-black' if review.images_count > 0}" %>
-        <%= content_tag :a, review.message.first_line(Settings.max_review_chars_per_line).html_safe, class: 'link-expand' %>
+        <%= content_tag :a, review.message.first_line(Settings.max_review_chars_per_line), class: 'link-expand' %>
         <%= "[#{review.comments_count}]" if review.comments_count > 0 %>
       </div>
       <div class="col author"><%= review_user_display_name(review) %></div>
