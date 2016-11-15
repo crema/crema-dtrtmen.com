@@ -282,7 +282,7 @@ $(document).on "change", "select.select-rating", ->
 $(document).on "change", "select#category", ->
   $.getScript($(this).val())
 
-$(document).on "change", "select#sort_type", ->
+$(document).on "change", "select#sort", ->
   $.getScript($(this).val())
 
 $(document).on "click", ".comments-link-collapse", ->
