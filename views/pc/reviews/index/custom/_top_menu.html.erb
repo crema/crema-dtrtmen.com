@@ -1,7 +1,7 @@
 <div class="menu">
   <ul class="rpane">
     <li class="sort-container">
-      <%= select_tag :sort_type, options_for_select(@brand.review_sort_types(@group_by).collect{|sort_type| [ReviewSort.t(sort_type), url_for(params.merge(category_id: @category.try(:id), group: @group_by, sort: sort_type).except(:page))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, sort: @review_sort).except(:page))), class: 'select2' %>
+      <%= select_tag :sort, options_for_select(@brand.review_sort_types(@group_by).map {|t| [ReviewSort.t(t), url_for(params.merge(category_id: @category.try(:id), group: @group_by, sort: t).except(:page))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, sort: @review_sort).except(:page))), class: 'select2' %>
     </li>
     <li class="search">
       <%= form_tag url_for(params.except(:page)), class: 'menu-search', method: :get, remote: true do %>
@@ -19,7 +19,7 @@
   </ul>
   <ul class="lpane">
     <li class="categories-container">
-      <%= select_tag :category, options_for_select(@categories.collect{|category| [category.name, url_for(params.merge(category_id: category.id, group: @group_by, sort: @review_sort))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, sort: @review_sort))), prompt: '카테고리별 보기', class: 'select2' %>
+      <%= select_tag :category, options_for_select(@categories.map {|c| [c.name, url_for(params.merge(category_id: c.id, group: @group_by, sort: @review_sort))]}, url_for(params.merge(category_id: @category.try(:id), group: @group_by, sort: @review_sort))), prompt: '카테고리별 보기', class: 'select2' %>
     </li>
   </ul>
 </div>
