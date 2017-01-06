@@ -8,8 +8,8 @@ if local_assigns[:external_widget]
   link_url = photo_review_popup_review_url(review, photo_index: i, external_widget: 1)
   target = '_blank'
 elsif @brand.review_enable_gallery_popup
-  link_class = 'photo-review-popup'
-  link_data = {photo_review_popup_url: photo_review_popup_review_path(review, photo_index: i)}
+  link_class = 'link-fullscreen-popup'
+  link_data = {url: photo_review_popup_review_path(review, photo_index: i)}
 else
   link_class = 'link-image-zoom'
   link_data = {url: image.url, width: image.width, height: image.height}
