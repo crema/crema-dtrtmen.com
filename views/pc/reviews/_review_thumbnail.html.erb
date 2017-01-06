@@ -1,4 +1,4 @@
-<%= content_tag_for :li, review, data: {product_url: review.product_url || (review.product ? review.product.url : nil), photo_review_popup_url: photo_review_popup_review_path(review)}, class: 'photo-review-popup' do %>
+<%= content_tag_for :li, review, data: {product_url: review.product_url || (review.product ? review.product.url : nil), url: photo_review_popup_review_path(review)}, class: 'link-fullscreen-popup' do %>
   <% product = review.product %>
   <% review_position = @first_review_position_in_page - review_counter if @first_review_position_in_page %>
   <%= content_tag :div, review_position, class: 'review-position' if @first_review_position_in_page %>
