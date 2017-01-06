@@ -264,7 +264,7 @@ body.reviews.index {
     margin: 40px -7px 0 -7px;
     width: 984px;
 
-    li.photo-review-popup {
+    li.link-fullscreen-popup {
       line-height: 14px;
       width: 314px;
       margin: 0 7px 14px 7px;
@@ -648,7 +648,7 @@ li.review {
   }
 }
 
-.photo-review-popup {
+.link-fullscreen-popup {
   cursor: pointer;
 
   .review-position-placeholder {
