@@ -15,7 +15,7 @@
         </div>
       <% end %>
     <% end %>
-    <%= content_tag :div, '이 상품 다시 보지 않기', class: 'popup-item-not-view', data: {url: review_pending_reviews_path(sub_order_id: @review.sub_order_id)} %>
+    <%= content_tag :div, t('reviews.new.dont_show_this_product_again'), class: 'popup-item-not-view', data: {url: review_pending_reviews_path(sub_order_id: @review.sub_order_id), confirm_message: t('reviews.new.confirm_dont_show')} %>
     <div class="item-information-text">
       <% if !@review.product.name.blank? %>
         <div class="item-name"><%= @review.product.name %></div>
