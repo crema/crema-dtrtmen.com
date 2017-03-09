@@ -1,6 +1,7 @@
 <%= form_for @review, html: {multipart: true, class: 'form-review new_review'}, remote: true, validate: true, data: {review_message_default: @brand.review_message_default, already_posted: @already_posted, alert_requirement: @brand.review_alert_mileage_requirement_before_submit} do |f| %>
   <div class="review-item-information">
-    <%= image_tag @review.product.image_url(:middle), class: 'smooth', alt: @review.product.name, style: "margin-top: #{@review.product.image.height(:middle)/ @review.product.image.width(:middle) * -184}px" %>
+    <% middle_w, middle_h = @review.product.image.dimension(:middle) %>
+    <%= image_tag @review.product.image_url(:middle), class: 'smooth', alt: @review.product.name, style: "margin-top: #{middle_h / middle_w * -184}px" %>
     <% if @brand.review_popup_display_no_mileage_message && @review.product.no_mileage? %>
       <div class="no-mileage-tag">적립금 제외 상품</div>
     <% elsif @brand.review_show_first_photo %>

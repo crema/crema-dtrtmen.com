@@ -12,7 +12,8 @@ elsif @brand.review_enable_gallery_popup
   link_data = {url: photo_review_popup_review_path(review, photo_index: i)}
 else
   link_class = 'link-image-zoom'
-  link_data = {url: image.url, width: image.width, height: image.height}
+  w, h = image.dimension
+  link_data = {url: image.url, width: w, height: h}
 end
 %>
 <%= content_tag :li, class: local_assigns[:li_class] do %>

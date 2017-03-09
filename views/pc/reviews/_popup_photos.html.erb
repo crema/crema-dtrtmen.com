@@ -1,6 +1,7 @@
 <% (1..@review.images_count).each do |index| %>
   <% image = @review.image(index) %>
-  <%= content_tag :div, data: {width: image.width, height: image.height, index: index, count: @review.images_count}, id: "photo-container-#{index}", class: "photo-container #{'selected' if index == @photo_index.to_i} ie-opacity-fix" do %>
-    <%= image_tag image.url, class: 'review-image-zoom', data: {width: image.width, height: image.height}, alt: @review.title %>
+  <% w, h = image.dimension %>
+  <%= content_tag :div, data: {width: w, height: h, index: index, count: @review.images_count}, id: "photo-container-#{index}", class: "photo-container #{'selected' if index == @photo_index.to_i} ie-opacity-fix" do %>
+    <%= image_tag image.url, class: 'review-image-zoom', data: {width: w, height: h}, alt: @review.title %>
   <% end %>
 <% end %>
