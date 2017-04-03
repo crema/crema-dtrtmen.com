@@ -7,13 +7,9 @@ if local_assigns[:external_widget]
   link_class = 'photo-review-new-window'
   link_url = photo_review_popup_review_url(review, photo_index: i, external_widget: 1)
   target = '_blank'
-elsif @brand.review_enable_gallery_popup
+else
   link_class = 'link-fullscreen-popup'
   link_data = {url: photo_review_popup_review_path(review, photo_index: i)}
-else
-  link_class = 'link-image-zoom'
-  w, h = image.dimension
-  link_data = {url: image.url, width: w, height: h}
 end
 %>
 <%= content_tag :li, class: local_assigns[:li_class] do %>
