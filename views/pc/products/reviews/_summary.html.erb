@@ -23,13 +23,9 @@ reviews = product.meta_visible_reviews
               link_class = 'photo-review-new-window fade-from-grayscale'
               link_url = photo_review_popup_review_url(image.model.id, photo_index: image.mounted_as[5].to_i, external_widget: 1)
               target = '_blank'
-            elsif brand.review_enable_gallery_popup
+            else
               link_class = 'link-fullscreen-popup fade-from-grayscale'
               link_data = {url: photo_review_popup_review_path(image.model.id, photo_index: image.mounted_as[5].to_i)}
-            else
-              link_class = 'link-image-zoom fade-from-grayscale'
-              w, h = image.dimension
-              link_data = {url: image.url, width: w, height: h}
             end
           %>
           <li class="photo-review-thumbnail">
