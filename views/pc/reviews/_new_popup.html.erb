@@ -39,7 +39,7 @@
           maxlength: Settings.max_review_length,
           rows: 8,
           cols: 5000, # HACK - IE8 textarea scroll bug
-          data: {up_counter: true, min_height: (browser.ie7? ? 135 : 158), minimum_message_length: @brand.min_review_length_to_get_mileage},
+          data: {up_counter: true, min_height: (browser.ie?(7) ? 135 : 158), minimum_message_length: @brand.min_review_length_to_get_mileage},
           default_count: @review.message ? @review.message.gsub(/\s/, '').length : 0,
           class: 'autogrow count-limit'
           ) %>
