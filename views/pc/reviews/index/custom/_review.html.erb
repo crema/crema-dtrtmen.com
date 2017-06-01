@@ -1,17 +1,16 @@
-<%= content_tag_for :li, review, data: {product_url: review.product_url, expand_url: expand_review_path(review, widget_id: widget.id)} do %>
+<% product_url = review.product_url %>
+<%= content_tag_for :li, review, data: {expand_url: expand_review_path(review, widget_id: widget.id)} do %>
   <%= content_tag :div, class: 'review-content', data: {toggle: true} do %>
     <div class="review-content-summary">
       <% review_position = @first_review_position_in_page - review_counter if @first_review_position_in_page %>
       <div class="col index"><%= @first_review_position_in_page ? review_position : review.id %></div>
       <div class="col product-image">
-        <a class="image link-product">
+        <%= content_tag :a, class: 'image link-product link-iframe', data: {url: product_url} do %>
           <%= image_tag review.product_image_url, class: 'smooth', alt: review.product_name, width: 80, height: 80 %>
-        </a>
+        <% end %>
       </div>
       <div class="col product-name">
-        <a class="link-product">
-          <%= review.product_name %>
-        </a>
+        <%= content_tag :a, review.product_name, class: 'link-product link-iframe', data: {url: product_url} %>
       </div>
       <div class="col score">
         <div class="star-rating-container">
