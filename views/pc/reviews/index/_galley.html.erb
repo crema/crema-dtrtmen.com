@@ -3,7 +3,7 @@
   <%= content_tag :div, class: "widget widget-reviews pagination-list" do %>
     <div class="widget-body index-thumbnail-container">
       111<%= render 'reviews/top_menu' %>
-      <%= render 'reviews/notices' if @brand.review_show_notice_every_board %>
+      <%= render 'reviews/notices' if widget.show_notices %>
       <% if @reviews.empty? %>
         <div class="no-data"><%= t('reviews.no_reviews') %></div>
       <% else %>
