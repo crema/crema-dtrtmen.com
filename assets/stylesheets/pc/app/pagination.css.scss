@@ -1,11 +1,11 @@
 /* Full number pagination */
-.paging_full_numbers { height: 22px; line-height: 22px; }
+.paging_full_numbers { height: 22px; }
 .paging_full_numbers .next:active, .paging_full_numbers .first:active, .paging_full_numbers .previous:active, .paging_full_numbers .last:active { font-weight: normal!important; }
 .paging_full_numbers a:active { outline: none }
 .paging_full_numbers a:hover { text-decoration: none; }
 .paging_full_numbers a.paginate_button, .paging_full_numbers a.paginate_active { padding: 4px 5px; margin: 0; cursor: pointer; *cursor: hand; color: #868686; font-size: 18px; border: 0; height: 22px; }
 .paging_full_numbers a.paginate_button { background: #f2f2f2; }
-.paging_full_numbers a.paginate_button:hover { color: #2d2a2a; }
+.paging_full_numbers a.paginate_button:hover { color: #2d2a2a; background: white;}
 .paging_full_numbers a.paginate_active, .paging_full_numbers a.paginate_button:active { color: #2d2a2a; background: white; }
 .paginate_button_disabled, .paginate_button_disabled:active  { color: #868686!important; box-shadow: none!important; font-weight: normal!important; }
 
@@ -14,7 +14,7 @@
 }
 
 .paging_full_numbers .previous, .paging_full_numbers .next {
-  border: 1px solid #5f5c5d;
+  border: 1px solid #5f5c5d !important;
   padding: 4px 9px 6px 10px !important;
   height: 26px !important;
   border-radius: 0 !important;
