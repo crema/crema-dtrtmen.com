@@ -68,7 +68,7 @@
                     <%= render 'action_likes', review: @review, hide_edit: true %>
                   </div>
                   <% if @brand.review_enable_user_comments || @review.comments_count > 0 %>
-                    <%= content_tag :div, class: "comments-container ie-opacity-fix #{'hidden' if @external_widget && @review.comments_count == 0}" do %>
+                    <%= content_tag :div, class: "comments-container js-comments-container ie-opacity-fix #{'hidden' if @external_widget && @review.comments_count == 0}" do %>
                       <ul class="review-comments">
                         <%= render @review.comments if @review.comments_count > 0 %>
                       </ul>
