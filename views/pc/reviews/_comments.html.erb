@@ -1,5 +1,5 @@
 <% if @brand.review_enable_user_comments || review.comments_count > 0 %>
-  <%= content_tag :div, class: "comments-container ie-opacity-fix #{'hidden' if local_assigns[:external_widget] && review.comments_count == 0}" do %>
+  <%= content_tag :div, class: "comments-container js-comments-container ie-opacity-fix #{'hidden' if local_assigns[:external_widget] && review.comments_count == 0}" do %>
     <% if @brand.review_enable_user_comments && !local_assigns[:external_widget] %>
       <div class="new-comments ie-opacity-fix">
         <%= form_for Comment.new, url: comments_path, validate: true, remote: true, data: {login_required: true} do |f| %>
