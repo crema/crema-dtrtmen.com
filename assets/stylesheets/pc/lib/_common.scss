@@ -56,3 +56,9 @@ $z-index-watermark: 20000;
     @include opacity(0.3);
   }
 }
+
+@mixin mobile {
+  @media (max-width: 540px) {
+    @content;
+  }
+}
