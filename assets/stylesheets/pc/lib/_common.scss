@@ -36,6 +36,22 @@ $z-index-watermark: 20000;
   }
 }
 
+@mixin clearfix_left {
+  body.ie & {
+    height: 1%;
+  }
+
+  &:after {
+    clear: left;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+  }
+}
+
 @mixin grayscale($scale) {
   filter: grayscale($scale);
   filter: gray;
